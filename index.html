@@ -11,7 +11,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            background: url('../images.jpeg') no-repeat center center fixed;
+            background: url('/img/images.jpeg') no-repeat center center fixed;
             background-size: cover;
             color: #fff;
         }
@@ -32,6 +32,7 @@
             padding: 50px 20px;
         }
 
+        /* Chatbot Button */
         .chatbot-button {
             position: fixed;
             bottom: 30px;
@@ -52,18 +53,21 @@
             background-color: #0056b3;
         }
 
+        /* Chatbot Popup */
         .chatbot-popup {
             position: fixed;
             bottom: 100px;
             right: 30px;
-            width: 500px;
+            width: 100%;
+            max-width: 500px;
             background-color: #fff;
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
             display: none;
             z-index: 999;
             max-height: 400px;
-
+            overflow: hidden;
+            transition: max-height 0.3s ease;
         }
 
         .chatbot-header {
@@ -82,7 +86,7 @@
             padding: 10px;
             background-color: #f1f1f1;
             overflow-y: auto;
-            max-height: 300px; /* Adjusted to create a scrollable chat area */
+            max-height: 300px; /* Scrollable chat area */
         }
 
         .chatbot-footer {
@@ -152,6 +156,27 @@
             border-radius: 20px 20px 20px 0;
         }
 
+        /* Responsiveness */
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            .chatbot-button {
+                width: 50px;
+                height: 50px;
+                font-size: 24px;
+            }
+
+            .chatbot-popup {
+                width: 90%;
+                bottom: 80px;
+            }
+
+            .chatbot-body {
+                max-height: 250px; /* Adjusted height for mobile */
+            }
+        }
     </style>
 </head>
 <body>
