@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot Website</title>
+    <style>
+        /* Global Styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background: url('bg.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+        }
+
+        header {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin: 0;
+        }
+
+        .content {
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        /* Image Slider Styling */
+        .slider {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: 30px auto;
+            overflow: hidden;
+        }
+
+        .slides {
+            display: flex;
+            transition: transform 1s ease-in-out;
+        }
+
+        .slide {
+            min-width: 100%;
+            box-sizing: border-box;
+        }
+
+        .slide img {
+            width: 100%;
+            height: auto;
+        }
+
+        /* Chatbot Button */
+        .chatbot-button {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 30px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s;
+        }
+
+        .chatbot-button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Chatbot Popup */
+        .chatbot-popup {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            width: 100%;
+            max-width: 500px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            display: none;
+            z-index: 999;
+            max-height: 400px;
+            overflow: auto;
+            transition: max-height 0.3s ease;
+        }
+
+        .chatbot-header {
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            font-size: 1.2em;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chatbot-body {
+            padding: 10px;
+            background-color: #f1f1f1;
+            overflow-y: auto;
+            max-height: 300px; /* Scrollable chat area */
+        }
+
+        .chatbot-footer {
+            padding: 10px;
+            background-color: #fff;
+            border-bottom-left-radius: 8px;
+            border-bottom-right-radius: 8px;
+            display: flex;
+            align-items: center;
+        }
+
+        .chatbot-footer input {
+            width: 80%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+
+        .chatbot-footer button {
+            padding: 8px 12px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .chatbot-footer button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Styling for the chat bubbles */
+        .chat-message {
+            display: flex;
+            margin: 10px 0; /* Increased margin to create space between messages */
+            max-width: 80%;
+        }
+
+        .chat-message.user {
+            justify-content: flex-end; /* User message to the right */
+            margin-left: auto; /* Ensure the user message sticks to the right */
+        }
+
+        .chat-message.bot {
+            justify-content: flex-start; /* Bot message to the left */
+            margin-right: auto; /* Ensure the bot message sticks to the left */
+        }
+
+        .chat-bubble {
+            padding: 10px 15px;
+            border-radius: 20px;
+            max-width: 75%;
+            font-size: 1em;
+            word-wrap: break-word;
+        }
+
+        .chat-bubble.user {
+            background-color: #28a745;
+            color: white;
+            border-radius: 20px 20px 0 20px;
+        }
+
+        .chat-bubble.bot {
+            background-color: #007bff;
+            color: white;
+            border-radius: 20px 20px 20px 0;
+        }
+
+        /* Responsiveness */
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            .chatbot-button {
+                width: 50px;
+                height: 50px;
+                font-size: 24px;
+            }
+
+            .chatbot-popup {
+                width: 90%;
+                bottom: 80px;
+            }
+
+            .chatbot-body {
+                max-height: 250px; /* Adjusted height for mobile */
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Pendaftaran Kampus STIKI Malang</h1>
+</header>
+
+<div class="slider">
+    <div class="slides" id="sliderSlides">
+        <div class="slide">
+            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhjTJmZE_7jO1I8KPpqnhcRYIn8B96EboguAEtgicUoueZZtojwgsAeYsznpxtS8wpFh4BmKgayScDdgc5iBNKeAz0X3u5APs4E3Ts-4Yuv4z51uKft1sA2IXfroISR-RcbbnZ83yOERaKt/s1600/stiki+malang.jpg" alt="Image 1">
+        </div>
+        <div class="slide">
+            <img src="https://cdn-1.timesmedia.co.id/images/2023/05/08/stiki.jpg" alt="Image 2">
+        </div>
+        <div class="slide">
+            <img src="https://cdn-1.timesmedia.co.id/images/2023/07/07/stiki-mlg.jpg?v=7.0.0" alt="Image 3">
+        </div>
+    </div>
+</div>
+
+<div class="content">
+    <p>Chat dengan kami lewat tombol di pojok kanan bawah untuk informasi lebih lanjut!</p>
+</div>
+
+<button class="chatbot-button" onclick="toggleChatbot()">💬</button>
+
+<div class="chatbot-popup" id="chatbotPopup">
+    <div class="chatbot-header">
+        <h3>Chatbot</h3>
+        <button onclick="toggleChatbot()" style="background: none; border: none; color: white; font-size: 1.5em;">✖</button>
+    </div>
+    <div class="chatbot-body" id="chatbotBody">
+        <div class="chat-message bot">
+            <div class="chat-bubble bot">Halo! Ada yang bisa saya bantu terkait pendaftaran?</div>
+        </div>
+    </div>
+    <div class="chatbot-footer">
+        <input type="text" id="chatbotInput" placeholder="Tulis pesan..." onkeydown="handleKeyDown(event)">
+        <button onclick="sendMessage()">Kirim</button>
+    </div>
+</div>
+
+<script>
+    let publicUrl = "https://ebb1-35-231-173-213.ngrok-free.app"; // GANTI dengan link ngrok HTTPS kamu
+
+    let currentIndex = 0;
+
+    function toggleChatbot() {
+        const popup = document.getElementById('chatbotPopup');
+        popup.style.display = (popup.style.display === 'block') ? 'none' : 'block';
+    }
+
+    async function sendMessage() {
+        const input = document.getElementById('chatbotInput');
+        const message = input.value;
+        if (message.trim() !== '') {
+            const chatbotBody = document.getElementById('chatbotBody');
+            const userMessage = document.createElement('div');
+            userMessage.classList.add('chat-message', 'user');
+            const userBubble = document.createElement('div');
+            userBubble.classList.add('chat-bubble', 'user');
+            userBubble.textContent = message;
+            userMessage.appendChild(userBubble);
+            chatbotBody.appendChild(userMessage);
+            input.value = '';
+
+            // Auto-scroll ke bawah setelah mengirim pesan
+            chatbotBody.scrollTop = chatbotBody.scrollHeight;
+
+            try {
+                const response = await fetch(publicUrl + '/chat', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ message: message }),
+                });
+
+                const data = await response.json();
+                const botMessage = document.createElement('div');
+                botMessage.classList.add('chat-message', 'bot');
+                const botBubble = document.createElement('div');
+                botBubble.classList.add('chat-bubble', 'bot');
+                botBubble.textContent = data.response;
+                botMessage.appendChild(botBubble);
+                chatbotBody.appendChild(botMessage);
+            } catch (err) {
+                const errorMessage = document.createElement('div');
+                errorMessage.classList.add('chat-message', 'bot');
+                const errorBubble = document.createElement('div');
+                errorBubble.classList.add('chat-bubble', 'bot');
+                errorBubble.textContent = 'Bot: Maaf, server error.';
+                errorMessage.appendChild(errorBubble);
+                chatbotBody.appendChild(errorMessage);
+            }
+
+            // Auto-scroll ke bawah setelah mendapatkan balasan dari bot
+            chatbotBody.scrollTop = chatbotBody.scrollHeight;
+        }
+    }
+
+    // Fungsi untuk menangani event 'Enter' pada keyboard
+    function handleKeyDown(event) {
+        if (event.key === 'Enter') {
+            sendMessage();
+        }
+    }
+
+    // Auto slide images every 3 seconds
+    setInterval(() => {
+        const slides = document.getElementById('sliderSlides');
+        currentIndex = (currentIndex + 1) % 3; // Loop back to the first image after 3 images
+        slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+    }, 3000);
+</script>
+
+</body>
+</html>

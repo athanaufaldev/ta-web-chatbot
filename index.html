@@ -1,321 +1,1710 @@
+
 <!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chatbot Website</title>
-    <style>
-        /* Global Styling */
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            background: url('bg.jpg') no-repeat center center fixed;
-            background-size: cover;
-            color: #fff;
-        }
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+    <!--<![endif]-->
 
-        header {
-            background-color: rgba(0, 0, 0, 0.5);
-            padding: 20px;
-            text-align: center;
-        }
+    <!-- Head BEGIN -->
+    <head>
+        <meta charset="utf-8">
+        <title>STIKI Malang PMB Online</title>
 
-        header h1 {
-            font-size: 2.5em;
-            margin: 0;
-        }
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-        .content {
-            text-align: center;
-            padding: 50px 20px;
-        }
+        <meta content="STIKI PMB Online" name="description">
+        <meta content="stiki, pmb, online, ubhinus" name="keywords">
+        <meta content="puskom.stiki.ac.id" name="author">
 
-        /* Image Slider Styling */
-        .slider {
-            position: relative;
-            width: 100%;
-            max-width: 800px;
-            margin: 30px auto;
-            overflow: hidden;
-        }
+        <meta property="og:site_name" content="stikipmbonline">
+        <meta property="og:title" content="stiki pmb online">
+        <meta property="og:description" content="stiki pendaftaran mahasiswa baru online">
+        <meta property="og:type" content="website">
+        <meta property="og:image" content="https://pmb.ubhinus.ac.id/assets/img/favicon.ico"><!-- link to image for socio -->
+        <meta property="og:url" content="pmb.stiki.ac.id">
 
-        .slides {
-            display: flex;
-            transition: transform 1s ease-in-out;
-        }
+        <link rel="shortcut icon" href="https://pmb.ubhinus.ac.id/assets/img/favicon.ico">
+        <!-- Fonts START -->
+        <link href="https://pmb.ubhinus.ac.id/assets/frontend/onepage/css/fonts.css" rel="stylesheet" type="text/css">
+        <!-- Fonts END -->
+        <!-- Global styles BEGIN -->
+        <link href="https://pmb.ubhinus.ac.id/assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://pmb.ubhinus.ac.id/assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="https://pmb.ubhinus.ac.id/assets/plugins/fontawesome6/css/all.css">
+        <link href="https://pmb.ubhinus.ac.id/assets/global/plugins/slider-revolution-slider/rs-plugin/css/settings.css" rel="stylesheet">
+        <!-- Global styles END -->
+        <!-- Page level plugin styles BEGIN -->
+        <link href="https://pmb.ubhinus.ac.id/assets/global/plugins/fancybox/source/jquery.fancybox.css" rel="stylesheet">
+        <!-- Page level plugin styles END --> 
+        <!-- Theme styles BEGIN -->
+        <link href="https://pmb.ubhinus.ac.id/assets/global/css/components.css" rel="stylesheet">
+        <link href="https://pmb.ubhinus.ac.id/assets/frontend/onepage/css/style.css" rel="stylesheet">
+        <link href="https://pmb.ubhinus.ac.id/assets/frontend/onepage/css/style-responsive.css" rel="stylesheet">
+        <link href="https://pmb.ubhinus.ac.id/assets/frontend/onepage/css/themes/red.css" rel="stylesheet" id="style-color">
+        <link href="https://pmb.ubhinus.ac.id/assets/frontend/onepage/css/custom.css" rel="stylesheet">
+        <link href="https://pmb.ubhinus.ac.id/assets/plugins/slick/slick.css" rel="stylesheet">
 
-        .slide {
-            min-width: 100%;
-            box-sizing: border-box;
-        }
-
-        .slide img {
-            width: 100%;
-            height: auto;
-        }
-
-        /* Chatbot Button */
-        .chatbot-button {
+        <link rel="stylesheet" type="text/css" href="https://pmb.ubhinus.ac.id/assets/frontend/onepage/css/jquery.notific8.min.css"/>
+        <!-- Theme styles END -->
+        <!--SELECT2-->
+        <link href="https://pmb.ubhinus.ac.id/assets/additional/select2/select2.min.css" rel="stylesheet" type="text/css"/>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+        
+          gtag('config', 'UA-142310439-1');
+        </script>
+        <style>
+          /* go2top */
+          .whatsapme,
+          .whatsapme:focus {
             position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 60px;
-            height: 60px;
-            font-size: 30px;
-            cursor: pointer;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-            transition: background-color 0.3s;
-        }
-
-        .chatbot-button:hover {
-            background-color: #0056b3;
-        }
-
-        /* Chatbot Popup */
-        .chatbot-popup {
-            position: fixed;
-            bottom: 100px;
-            right: 30px;
-            width: 100%;
-            max-width: 500px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            left: 15px;
+            bottom: 15px;
+            color: #999;
+            width: 200px;
+            height: 80px;
+            text-align: center;
+            padding: 7px 0 0 1px;
+            z-index: 99999;
+            font-size: 18px;
+            line-height: 1;
+          }
+          .whatsapme #wame-hover{
             display: none;
-            z-index: 999;
-            max-height: 400px;
-            overflow: auto;
-            transition: max-height 0.3s ease;
-        }
-
-        .chatbot-header {
-            background-color: #007bff;
-            color: white;
-            padding: 10px;
-            font-size: 1.2em;
-            border-top-left-radius: 8px;
-            border-top-right-radius: 8px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .chatbot-body {
-            padding: 10px;
-            background-color: #f1f1f1;
-            overflow-y: auto;
-            max-height: 300px; /* Scrollable chat area */
-        }
-
-        .chatbot-footer {
-            padding: 10px;
-            background-color: #fff;
-            border-bottom-left-radius: 8px;
-            border-bottom-right-radius: 8px;
-            display: flex;
-            align-items: center;
-        }
-
-        .chatbot-footer input {
-            width: 80%;
-            padding: 8px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            margin-right: 10px;
-        }
-
-        .chatbot-footer button {
-            padding: 8px 12px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        .chatbot-footer button:hover {
-            background-color: #0056b3;
-        }
-
-        /* Styling for the chat bubbles */
-        .chat-message {
-            display: flex;
-            margin: 10px 0; /* Increased margin to create space between messages */
-            max-width: 80%;
-        }
-
-        .chat-message.user {
-            justify-content: flex-end; /* User message to the right */
-            margin-left: auto; /* Ensure the user message sticks to the right */
-        }
-
-        .chat-message.bot {
-            justify-content: flex-start; /* Bot message to the left */
-            margin-right: auto; /* Ensure the bot message sticks to the left */
-        }
-
-        .chat-bubble {
-            padding: 10px 15px;
-            border-radius: 20px;
-            max-width: 75%;
-            font-size: 1em;
-            word-wrap: break-word;
-        }
-
-        .chat-bubble.user {
-            background-color: #28a745;
-            color: white;
-            border-radius: 20px 20px 0 20px;
-        }
-
-        .chat-bubble.bot {
-            background-color: #007bff;
-            color: white;
-            border-radius: 20px 20px 20px 0;
-        }
-
-        /* Responsiveness */
-        @media (max-width: 600px) {
-            header h1 {
-                font-size: 1.8em;
+          }
+          .whatsapme:hover #wame{
+            display: none;
+          }
+          .whatsapme:hover #wame-hover{
+            display: block;
+          }
+		  .slider-clickabled{
+			  cursor:pointer;
+		  }
+          ul.header-navigation li a{
+            font-size : 16px;
+          }
+          @media screen and (max-width: 700px){
+            #promo-block{
+                display: none !important;
             }
-
-            .chatbot-button {
-                width: 50px;
-                height: 50px;
-                font-size: 24px;
+            #promo-block-mobile{
+                display: block !important;
             }
-
-            .chatbot-popup {
-                width: 90%;
-                bottom: 80px;
+          }
+          @media screen and (min-width: 700px){
+            #promo-block{
+                display: block !important;
             }
-
-            .chatbot-body {
-                max-height: 250px; /* Adjusted height for mobile */
+            #promo-block-mobile{
+                display: none !important;
             }
-        }
-    </style>
-</head>
-<body>
-
-<header>
-    <h1>Pendaftaran Kampus STIKI Malang</h1>
-</header>
-
-<div class="slider">
-    <div class="slides" id="sliderSlides">
-        <div class="slide">
-            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhjTJmZE_7jO1I8KPpqnhcRYIn8B96EboguAEtgicUoueZZtojwgsAeYsznpxtS8wpFh4BmKgayScDdgc5iBNKeAz0X3u5APs4E3Ts-4Yuv4z51uKft1sA2IXfroISR-RcbbnZ83yOERaKt/s1600/stiki+malang.jpg" alt="Image 1">
+          }
+          /* ADD on */
+          ul.timeline {
+                list-style-type: none;
+                position: relative;
+            }
+            ul.timeline:before {
+                content: ' ';
+                background: #d4d9df;
+                display: inline-block;
+                position: absolute;
+                left: 29px;
+                width: 2px;
+                height: 100%;
+                z-index: 400;
+            }
+            ul.timeline > li {
+                margin: 20px 0;
+                padding-left: 20px;
+            }
+            ul.timeline > li:before {
+                content: ' ';
+                background: white;
+                display: inline-block;
+                position: absolute;
+                border-radius: 50%;
+                border: 3px solid #e6400c;
+                left: 20px;
+                width: 20px;
+                height: 20px;
+                z-index: 400;
+            }
+            .template_faq {
+                background: #edf3fe none repeat scroll 0 0;
+            }
+            .panel-group {
+                background: #fff none repeat scroll 0 0;
+                border-radius: 3px;
+                box-shadow: 0 5px 30px 0 rgba(0, 0, 0, 0.04);
+                margin-bottom: 0;
+                padding: 30px;
+            }
+            #accordion .panel {
+                border: medium none;
+                border-radius: 0;
+                box-shadow: none;
+                margin: 0 0 15px 10px;
+            }
+            #accordion .panel-heading {
+                border-radius: 30px;
+                padding: 0;
+            }
+            #accordion .panel-title a {
+                background: #E85425 none repeat scroll 0 0;
+                border: 1px solid transparent;
+                border-radius: 30px;
+                color: #fff;
+                display: block;
+                font-size: 18px;
+                font-weight: 600;
+                padding: 12px 20px 12px 50px;
+                position: relative;
+                transition: all 0.3s ease 0s;
+            }
+            #accordion .panel-title a.collapsed {
+                background: #fff none repeat scroll 0 0;
+                border: 1px solid #ddd;
+                color: #333;
+            }
+            #accordion .panel-title a::after, #accordion .panel-title a.collapsed::after {
+                background: #E85425 none repeat scroll 0 0;
+                border: 1px solid transparent;
+                border-radius: 50%;
+                box-shadow: 0 3px 10px rgba(0, 0, 0, 0.58);
+                color: #fff;
+                content: "";
+                font-family: fontawesome;
+                font-size: 25px;
+                height: 55px;
+                left: -20px;
+                line-height: 55px;
+                position: absolute;
+                text-align: center;
+                top: -5px;
+                transition: all 0.3s ease 0s;
+                width: 55px;
+            }
+            #accordion .panel-title a.collapsed::after {
+                background: #fff none repeat scroll 0 0;
+                border: 1px solid #ddd;
+                box-shadow: none;
+                color: #333;
+                content: "";
+            }
+            #accordion .panel-body {
+                background: transparent none repeat scroll 0 0;
+                border-top: medium none;
+                padding: 10px 15px 10px 9px;
+                position: relative;
+            }
+            #accordion .panel-body p {
+                border-left: 1px dashed #8c8c8c;
+                padding-left: 25px;
+            }
+        </style>
+    </head>
+    <!--DOC: menu-always-on-top class to the body element to set menu on top -->
+    <body>  
+        <style>.popover{z-index: 9999;}</style>
+        <!-- Header BEGIN -->
+        <div class="header header-mobi-ext" style="padding-bottom: 10px;">
+            <div class="container">
+                <div class="col-lg-12">
+                    <div id="google_translate_element" class="pull-right"></div>
+                </div>
+                <div class="row">
+                    <!-- Logo BEGIN -->
+                    <div class="col-md-2 col-sm-2">
+                        <a class="scroll site-logo" href="#promo-block"><img src="https://pmb.ubhinus.ac.id/assets/frontend/onepage/img/stiki_pmb_logo.png" alt="STIKI PMB Online"></a>
+                    </div>
+                    <!-- Logo END -->
+                    <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
+                    <!-- Navigation BEGIN -->
+                    <div class="col-md-10 pull-right">
+                        <ul class="header-navigation">
+                            <li class="current"><a href="#promo-block">Home</a></li>
+                            <li><a href="javascript:;" data-aksi="download_brochure_id">Brosur</a></li>
+                            <!-- <li><a href="javascript:;" data-aksi="download_brochure_en" id="my_brochure_link" data-container="body" data-toggle="popover" data-placement="bottom" data-content="International Class Brochure">Brochure</a></li>			 -->
+                            <li><a href="#daftar">Daftar</a></li>                            <li><a href="#fakultas">Fakultas</a></li>
+                            <li><a href="#prodi">Prodi</a></li>
+                            <li><a href="#jalur">Jalur</a></li>
+                            <li><a href="#beasiswa">Beasiswa</a></li>
+                            <li><a href="javascript:;" data-aksi="open_kerjasamasma">Kerjasama SMA/K</a></li>
+                            <li><a href="#panduan">Panduan</a></li>
+                                                        <li><a href="https://pmb.ubhinus.ac.id/index.php/login">Login</a></li>
+                        </ul>
+                    </div>
+                    <!-- Navigation END -->
+                </div>
+            </div>
         </div>
-        <div class="slide">
-            <img src="https://cdn-1.timesmedia.co.id/images/2023/05/08/stiki.jpg" alt="Image 2">
+        <!-- Header END -->
+        <!-- Promo block BEGIN -->
+        <div class="promo-block" id="promo-block">
+            <div class="tp-banner-container">
+                <div class="tp-banner" >
+                    <ul>
+                      <li data-transition="fade" data-slotamount="5" data-masterspeed="700" data-delay="9400" class="slider-item-1 " data-href="javascript:;">
+                                    <img src="https://files2.stiki.ac.id/webbanner/48289e222050871c86a3e5d4f3684cfa26e0378e50f88a5c120d51c7a9c9620e.jpeg" alt="" data-bgfit="cover" style="opacity:0.4 !important;" data-bgposition="center center" data-bgrepeat="no-repeat">
+                                    <div class="tp-caption large_text customin customout start"
+                                            data-x="center"
+                                            data-hoffset="0"
+                                            data-y="center"
+                                            data-voffset="60"
+                                            data-customin="x:0;y:0;z:0;rotationX:90;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
+                                            data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
+                                            data-speed="1000"
+                                            data-start="500"
+                                            data-easing="Back.easeInOut"
+                                            data-endspeed="300">
+                                    </div>
+                                </li><li data-transition="fade" data-slotamount="5" data-masterspeed="700" data-delay="9400" class="slider-item-1 " data-href="javascript:;">
+                                    <img src="https://pmb.stiki.ac.id/assets/frontend/onepage/img/silder/ed4519c5ae3e881a0958bb60059a01066527a9ed29b57.jpg" alt="" data-bgfit="cover" style="opacity:0.4 !important;" data-bgposition="center center" data-bgrepeat="no-repeat">
+                                    <div class="tp-caption large_text customin customout start"
+                                            data-x="center"
+                                            data-hoffset="0"
+                                            data-y="center"
+                                            data-voffset="60"
+                                            data-customin="x:0;y:0;z:0;rotationX:90;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
+                                            data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
+                                            data-speed="1000"
+                                            data-start="500"
+                                            data-easing="Back.easeInOut"
+                                            data-endspeed="300">
+                                    </div>
+                                </li><li data-transition="fade" data-slotamount="5" data-masterspeed="700" data-delay="9400" class="slider-item-1 " data-href="javascript:;">
+                                    <img src="https://pmb.stiki.ac.id/assets/frontend/onepage/img/silder/23585254d62e70d90e0ccdf7b908329c6527aa05e69c9.jpg" alt="" data-bgfit="cover" style="opacity:0.4 !important;" data-bgposition="center center" data-bgrepeat="no-repeat">
+                                    <div class="tp-caption large_text customin customout start"
+                                            data-x="center"
+                                            data-hoffset="0"
+                                            data-y="center"
+                                            data-voffset="60"
+                                            data-customin="x:0;y:0;z:0;rotationX:90;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
+                                            data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
+                                            data-speed="1000"
+                                            data-start="500"
+                                            data-easing="Back.easeInOut"
+                                            data-endspeed="300">
+                                    </div>
+                                </li><li data-transition="fade" data-slotamount="5" data-masterspeed="700" data-delay="9400" class="slider-item-1 " data-href="javascript:;">
+                                    <img src="https://pmb.stiki.ac.id/assets/frontend/onepage/img/silder/09dd8da6d71c663488205f67281f2b416527aa243617d.jpg" alt="" data-bgfit="cover" style="opacity:0.4 !important;" data-bgposition="center center" data-bgrepeat="no-repeat">
+                                    <div class="tp-caption large_text customin customout start"
+                                            data-x="center"
+                                            data-hoffset="0"
+                                            data-y="center"
+                                            data-voffset="60"
+                                            data-customin="x:0;y:0;z:0;rotationX:90;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
+                                            data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
+                                            data-speed="1000"
+                                            data-start="500"
+                                            data-easing="Back.easeInOut"
+                                            data-endspeed="300">
+                                    </div>
+                                </li><li data-transition="fade" data-slotamount="5" data-masterspeed="700" data-delay="9400" class="slider-item-1 " data-href="javascript:;">
+                                    <img src="https://pmb.stiki.ac.id/assets/frontend/onepage/img/silder/5eaa32de30277c54f7bdbe7ce225a7746527aa3a0e9df.jpg" alt="" data-bgfit="cover" style="opacity:0.4 !important;" data-bgposition="center center" data-bgrepeat="no-repeat">
+                                    <div class="tp-caption large_text customin customout start"
+                                            data-x="center"
+                                            data-hoffset="0"
+                                            data-y="center"
+                                            data-voffset="60"
+                                            data-customin="x:0;y:0;z:0;rotationX:90;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
+                                            data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
+                                            data-speed="1000"
+                                            data-start="500"
+                                            data-easing="Back.easeInOut"
+                                            data-endspeed="300">
+                                    </div>
+                                </li>                        <!-- THE THIRD SLIDE -->                    
+                    </ul>
+                </div>
+            </div>
         </div>
-        <div class="slide">
-            <img src="https://cdn-1.timesmedia.co.id/images/2023/07/07/stiki-mlg.jpg?v=7.0.0" alt="Image 3">
+        <div class="promo-block" id="promo-block-mobile">
+            <div class="tp-banner-container">
+                <div class="tp-banner" >
+                    <ul>
+                                              <!-- THE THIRD SLIDE -->                    
+                    </ul>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
+        <!-- Promo block END -->
 
-<div class="content">
-    <p>Chat dengan kami lewat tombol di pojok kanan bawah untuk informasi lebih lanjut!</p>
-</div>
-
-<button class="chatbot-button" onclick="toggleChatbot()">💬</button>
-
-<div class="chatbot-popup" id="chatbotPopup">
-    <div class="chatbot-header">
-        <h3>Chatbot</h3>
-        <button onclick="toggleChatbot()" style="background: none; border: none; color: white; font-size: 1.5em;">✖</button>
-    </div>
-    <div class="chatbot-body" id="chatbotBody">
-        <div class="chat-message bot">
-            <div class="chat-bubble bot">Halo! Ada yang bisa saya bantu terkait pendaftaran?</div>
-        </div>
-    </div>
-    <div class="chatbot-footer">
-        <input type="text" id="chatbotInput" placeholder="Tulis pesan..." onkeydown="handleKeyDown(event)">
-        <button onclick="sendMessage()">Kirim</button>
-    </div>
-</div>
-
-<script>
-    let publicUrl = "https://ebb1-35-231-173-213.ngrok-free.app"; // GANTI dengan link ngrok HTTPS kamu
-
-    let currentIndex = 0;
-
-    function toggleChatbot() {
-        const popup = document.getElementById('chatbotPopup');
-        popup.style.display = (popup.style.display === 'block') ? 'none' : 'block';
+        <!-- DAFTAR SEKARANG block BEGIN -->
+        <!-- form daftar -->
+        <div class="about-block content content-center " id="daftar">
+            <div class="container">      
+                <!-- BEGIN CONTENT -->
+                <!-- <div class="col-md-9 col-sm-9"> -->
+                <h2>Pendaftaran PMB Online</h2>
+                <h4>Silakan Anda mengisi data di bawah ini</h4>        
+                <div class="content-form-page">
+                    <style>
+    .select2-container--default .select2-selection--single .select2-selection__rendered{
+        line-height: 34px !important;
     }
-
-    async function sendMessage() {
-        const input = document.getElementById('chatbotInput');
-        const message = input.value;
-        if (message.trim() !== '') {
-            const chatbotBody = document.getElementById('chatbotBody');
-            const userMessage = document.createElement('div');
-            userMessage.classList.add('chat-message', 'user');
-            const userBubble = document.createElement('div');
-            userBubble.classList.add('chat-bubble', 'user');
-            userBubble.textContent = message;
-            userMessage.appendChild(userBubble);
-            chatbotBody.appendChild(userMessage);
-            input.value = '';
-
-            // Auto-scroll ke bawah setelah mengirim pesan
-            chatbotBody.scrollTop = chatbotBody.scrollHeight;
-
-            try {
-                const response = await fetch(publicUrl + '/chat', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ message: message }),
-                });
-
-                const data = await response.json();
-                const botMessage = document.createElement('div');
-                botMessage.classList.add('chat-message', 'bot');
-                const botBubble = document.createElement('div');
-                botBubble.classList.add('chat-bubble', 'bot');
-                botBubble.textContent = data.response;
-                botMessage.appendChild(botBubble);
-                chatbotBody.appendChild(botMessage);
-            } catch (err) {
-                const errorMessage = document.createElement('div');
-                errorMessage.classList.add('chat-message', 'bot');
-                const errorBubble = document.createElement('div');
-                errorBubble.classList.add('chat-bubble', 'bot');
-                errorBubble.textContent = 'Bot: Maaf, server error.';
-                errorMessage.appendChild(errorBubble);
-                chatbotBody.appendChild(errorMessage);
-            }
-
-            // Auto-scroll ke bawah setelah mendapatkan balasan dari bot
-            chatbotBody.scrollTop = chatbotBody.scrollHeight;
-        }
+    .select2-container .select2-selection--single{
+        height: 34px !important;
     }
+</style>
+<div class="row">
+    <div class="col-md-2 col-sm-2"></div>            
+    <form name="form_register" class="form-horizontal col-md-8 col-sm-8" role="form" action="https://pmb.ubhinus.ac.id/index.php/home/register" method="post">
+        <fieldset>                   
+            <div id="pesan" class="alert alert-info alert-dismissable" hidden="hidden">
+                <button type="button" class="close" data-hide="alert">&times;</button>
+                <strong>Info : </strong><span>Item isian belum terisi semuanya.</span>
+            </div> 
+            <div class="form-group">
+                <label for="form_nama" class="col-lg-3 control-label pull-left">Nama Lengkap  <span class="required">*</span></label>
+                <div class="col-lg-8">
+                    <input type="text" class="form-control" id="form_nama" name="form_nama" placeholder="Nama Lengkap" data-name="nama" style="text-transform: uppercase;">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="form_kota" class="col-lg-3 control-label pull-left">Kota Sekolah  <span class="required">*</span></label>                        
+                <div class="col-lg-8">
+                    <select name="form_kota" id="form_kota" class="form-control select2" data-name="kode_kota">
+                        <option value selected> - Pilih - </option><optgroup label="Bali"><option value="273" >Kabupaten Badung</option><option value="274" >Kabupaten Bangli</option><option value="516" >Kabupaten Buleleng</option><option value="276" >Kabupaten Gianyar</option><option value="277" >Kabupaten Jembrana</option><option value="278" >Kabupaten Karangasem</option><option value="279" >Kabupaten Klungkung</option><option value="275" >Kabupaten Singaraja</option><option value="280" >Kabupaten Tabanan</option><option value="281" >Kota Denpasar</option></optgroup><optgroup label="Banten"><option value="192" >Kabupaten Lebak</option><option value="193" >Kabupaten Pandeglang</option><option value="194" >Kabupaten Serang</option><option value="195" >Kabupaten Tangerang</option><option value="196" >Kota Cilegon</option><option value="197" >Kota Serang</option><option value="198" >Kota Tangerang</option><option value="199" >Kota Tangerang Selatan</option></optgroup><optgroup label="Bengkulu"><option value="143" >Kabupaten Bengkulu Selatan</option><option value="144" >Kabupaten Bengkulu Tengah</option><option value="145" >Kabupaten Bengkulu Timur</option><option value="146" >Kabupaten Kaur</option><option value="147" >Kabupaten Kepahiang</option><option value="148" >Kabupaten Lebong</option><option value="149" >Kabupaten Mukomuko</option><option value="150" >Kabupaten Rejang Lebong</option><option value="151" >Kabupaten Seluma</option><option value="152" >Kota Bengkulu</option></optgroup><optgroup label="Daerah Khusus Ibukota Jakarta"><option value="227" >Kabupaten Administrasi Kepulauan Seribu</option><option value="228" >Kota Administrasi Jakarta Barat</option><option value="229" >Kota Administrasi Jakarta Pusat</option><option value="230" >Kota Administrasi Jakarta Selatan</option><option value="231" >Kota Administrasi Jakarta Timur</option><option value="232" >Kota Administrasi Jakarta Utara</option></optgroup><optgroup label="DI Yogyakarta"><option value="268" >Kabupaten Bantul</option><option value="269" >Kabupaten Gunung Kidul</option><option value="270" >Kabupaten Kulon Progo</option><option value="271" >Kabupaten Sleman</option><option value="272" >Kota Yogyakarta</option></optgroup><optgroup label="Gorontalo"><option value="370" >Kabupaten Boalemo</option><option value="371" >Kabupaten Bone Bolango</option><option value="372" >Kabupaten Gorontalo</option><option value="373" >Kabupaten Gorontalo utara</option><option value="374" >Kabupaten Pohuwanto</option><option value="375" >Kota Gorontalo</option></optgroup><optgroup label="Jambi"><option value="132" >Kabupaten Batanghari</option><option value="133" >Kabupaten Bungo</option><option value="134" >Kabupaten Kerinci</option><option value="135" >Kabupaten Merangin</option><option value="136" >Kabupaten Muaro Jambi</option><option value="137" >Kabupaten Sarolangun</option><option value="138" >Kabupaten Tanjung Jabung Barat</option><option value="139" >Kabupaten Tanjung Jabung Timur</option><option value="140" >Kabupaten Tebo</option><option value="141" >Kota Jambi</option><option value="142" >Kota Sungai Penuh</option></optgroup><optgroup label="Jawa Barat"><option value="200" >Kabupaten Bandung</option><option value="201" >Kabupaten Bandung Barat</option><option value="202" >Kabupaten Bekasi</option><option value="203" >Kabupaten Bogor</option><option value="204" >Kabupaten Ciamis</option><option value="205" >Kabupaten Cianjur</option><option value="206" >Kabupaten Cirebon</option><option value="207" >Kabupaten Garut</option><option value="208" >Kabupaten Indramayu</option><option value="209" >Kabupaten Karawang</option><option value="210" >Kabupaten Kuningan</option><option value="211" >Kabupaten Majalengka</option><option value="212" >Kabupaten Pangandaran</option><option value="213" >Kabupaten Purwakarta</option><option value="214" >Kabupaten Subang</option><option value="215" >Kabupaten Sukabumi</option><option value="216" >Kabupaten Sumedang</option><option value="217" >Kabupaten Tasikmalaya</option><option value="218" >Kota Bandung</option><option value="219" >Kota Banjar </option><option value="220" >Kota Bekasi</option><option value="221" >Kota Bogor</option><option value="222" >Kota Cimahi</option><option value="223" >Kota Cirebon</option><option value="224" >Kota Depok</option><option value="225" >Kota Sukabumi</option><option value="226" >Kota Tasikmalaya</option></optgroup><optgroup label="Jawa Tengah"><option value="233" >Kabupaten Banjarnegara</option><option value="234" >Kabupaten Banyumas</option><option value="235" >Kabupaten Batang</option><option value="236" >Kabupaten Blora</option><option value="237" >Kabupaten Boyolali</option><option value="238" >Kabupaten Brebes</option><option value="239" >Kabupaten Cilacap</option><option value="240" >Kabupaten Demak</option><option value="241" >Kabupaten Grobogan</option><option value="242" >Kabupaten Jepara</option><option value="243" >Kabupaten Karanganyar</option><option value="244" >Kabupaten Kebumen</option><option value="245" >Kabupaten Kendal </option><option value="246" >Kabupaten Klaten</option><option value="247" >Kabupaten Kudus</option><option value="248" >Kabupaten Magelang</option><option value="249" >Kabupaten Pati</option><option value="250" >Kabupaten Pekalongan</option><option value="251" >Kabupaten Pemalang</option><option value="252" >Kabupaten Purbalingga</option><option value="253" >Kabupaten Purworejo</option><option value="254" >Kabupaten Rembang</option><option value="255" >Kabupaten Semarang</option><option value="256" >Kabupaten Sragen</option><option value="257" >Kabupaten Sukoharjo</option><option value="258" >Kabupaten Tegal</option><option value="259" >Kabupaten Temanggung</option><option value="260" >Kabupaten Wonogiri</option><option value="261" >Kabupaten Wonosobo</option><option value="262" >Kota Magelang</option><option value="263" >Kota Pekalongan</option><option value="264" >Kota Salatiga</option><option value="265" >Kota Semarang</option><option value="266" >Kota Surakarta</option><option value="267" >Kota Tegal</option></optgroup><optgroup label="Jawa Timur"><option value="1" >Kabupaten Bangkalan</option><option value="2" >Kabupaten Banyuwangi</option><option value="3" >Kabupaten Blitar</option><option value="4" >Kabupaten Bojonegoro</option><option value="5" >Kabupaten Bondowoso</option><option value="6" >Kabupaten Gresik</option><option value="7" >Kabupaten Jember</option><option value="8" >Kabupaten Jombang</option><option value="9" >Kabupaten Kediri</option><option value="10" >Kabupaten Lamongan</option><option value="11" >Kabupaten Lumajang</option><option value="12" >Kabupaten Madiun</option><option value="514" >Kabupaten Magetan</option><option value="13" >Kabupaten Malang</option><option value="14" >Kabupaten Mojokerto</option><option value="15" >Kabupaten Nganjuk</option><option value="16" >Kabupaten Ngawi</option><option value="17" >Kabupaten Pacitan</option><option value="18" >Kabupaten Pamekasan</option><option value="19" >Kabupaten Pasuruan</option><option value="20" >Kabupaten Ponorogo</option><option value="21" >Kabupaten Probolinggo</option><option value="22" >Kabupaten Sampang</option><option value="23" >Kabupaten Sidoarjo</option><option value="24" >Kabupaten Situbondo</option><option value="25" >Kabupaten Sumenep</option><option value="26" >Kabupaten Trenggalek</option><option value="27" >Kabupaten Tuban</option><option value="28" >Kabupaten Tulungagung</option><option value="29" >Kota Batu</option><option value="30" >Kota Blitar</option><option value="31" >Kota Kediri</option><option value="32" >Kota Madiun</option><option value="33" >Kota Malang</option><option value="34" >Kota Mojokerto</option><option value="35" >Kota Pasuruan</option><option value="36" >Kota Probolinggo</option><option value="37" >Kota Surabaya</option></optgroup><optgroup label="Kalimantan Barat"><option value="314" >Kabupaten Bengkayang</option><option value="315" >Kabupaten Kapuas Hulu</option><option value="316" >Kabupaten Kayong Utara</option><option value="317" >Kabupaten Ketapang</option><option value="318" >Kabupaten Kubu Raya</option><option value="319" >Kabupaten Landak</option><option value="320" >Kabupaten Melawi</option><option value="321" >Kabupaten Mempawah</option><option value="322" >Kabupaten Sambas</option><option value="323" >Kabupaten Sanggau</option><option value="324" >Kabupaten Sekadau</option><option value="325" >Kabupaten Sintang</option><option value="326" >Kota Pontianak</option><option value="327" >Kota Singkawang</option></optgroup><optgroup label="Kalimantan Selatan"><option value="342" >Kabupaten Balangan</option><option value="343" >Kabupaten Banjar</option><option value="344" >Kabupaten Barito Kuala</option><option value="345" >Kabupaten Hulu Sungai Selatan</option><option value="346" >Kabupaten Hulu Sungai Tengah</option><option value="347" >Kabupaten Hulu Sungai Utara</option><option value="348" >Kabupaten Kotabaru</option><option value="349" >Kabupaten Tabalong</option><option value="350" >Kabupaten Tanah Bumbu</option><option value="351" >Kabupaten Tanah Laut</option><option value="352" >Kabupaten Tapin</option><option value="353" >Kota Banjarbaru</option><option value="354" >Kota Banjarmasin</option></optgroup><optgroup label="Kalimantan Tengah"><option value="328" >Kabupaten Barito Selatan</option><option value="329" >Kabupaten Barito Timur</option><option value="330" >Kabupaten Barito Utara</option><option value="331" >Kabupaten Gunung Mas</option><option value="332" >Kabupaten Kapuas Hulu</option><option value="333" >Kabupaten Katingan</option><option value="334" >Kabupaten Kotawaringin Barat</option><option value="335" >Kabupaten Kotawaringin Timur</option><option value="336" >Kabupaten Lamandau</option><option value="337" >Kabupaten Murung Raya</option><option value="338" >Kabupaten Pulang Pisau</option><option value="340" >Kabupaten Seruyan</option><option value="339" >Kabupaten Sukamara</option><option value="341" >Kota Palangkaraya</option></optgroup><optgroup label="Kalimantan Timur"><option value="355" >Kabupaten Berau</option><option value="356" >Kabupaten Kutai Barat</option><option value="357" >Kabupaten Kutai Kartanegara</option><option value="358" >Kabupaten Kutai Timur</option><option value="359" >Kabupaten Mahakam Ulu</option><option value="360" >Kabupaten Paser</option><option value="361" >Kabupaten Penajam Paser Utara</option><option value="362" >Kota Balikpapan</option><option value="363" >Kota Bontang</option><option value="364" >Kota Samarinda</option></optgroup><optgroup label="Kalimantan Utara"><option value="365" >Kabupaten Bulungan</option><option value="366" >Kabupaten Malinau</option><option value="367" >Kabupaten Nunukan</option><option value="368" >Kabupaten Tana Tidung</option><option value="369" >Kota Tarakan</option></optgroup><optgroup label="Kepulauan Bangka Belitung"><option value="170" >Kabupaten Bangka</option><option value="171" >Kabupaten Bangka Barat</option><option value="172" >Kabupaten Bangka Selatan</option><option value="173" >Kabupaten Bangka Tengah</option><option value="174" >Kabupaten Belitung</option><option value="175" >Kabupaten Belitung Timur</option><option value="176" >Kota Pangkal Pinang</option></optgroup><optgroup label="Kepulauan Riau"><option value="125" >Kabupaten Bintan</option><option value="126" >Kabupaten Karimun</option><option value="127" >Kabupaten Kepulauan Anambas</option><option value="128" >Kabupaten Lingga</option><option value="129" >Kabupaten Natuna</option><option value="130" >Kota Batam</option><option value="131" >Kota Tanjung Pinang</option></optgroup><optgroup label="Lampung"><option value="180" >Kabupaten Lampung Barat</option><option value="179" >Kabupaten Lampung Selatan</option><option value="177" >Kabupaten Lampung Tengah</option><option value="181" >Kabupaten Lampung Timur</option><option value="178" >Kabupaten Lampung Utara</option><option value="182" >Kabupaten Mesuji</option><option value="183" >Kabupaten Pasawaran</option><option value="184" >Kabupaten Pesisir Barat</option><option value="185" >Kabupaten Pringsewu</option><option value="188" >Kabupaten Tanggamus</option><option value="186" >Kabupaten Tulang Bawang</option><option value="187" >Kabupaten Tulang Bawang Barat</option><option value="189" >Kabupaten Way Kanan</option><option value="190" >Kota Bandar Lampung</option><option value="191" >Kota Metro</option></optgroup><optgroup label="Luar Negeri"><option value="518" > Malaysia</option><option value="520" > SAINT HERBLAIN FRANCE</option><option value="515" >Kota Dili</option><option value="519" >Kota Gosford</option><option value="521" >Kota Jeddah</option><option value="517" >Kota Tajoura (Libyan Arab Jamahiriya)</option></optgroup><optgroup label="Maluku"><option value="451" >Kabupaten Buru</option><option value="452" >Kabupaten Buru Selatan</option><option value="453" >Kabupaten Kepulauan Aru</option><option value="454" >Kabupaten Maluku Barat Daya</option><option value="455" >Kabupaten Maluku Tengah</option><option value="456" >Kabupaten Maluku Tenggara</option><option value="457" >Kabupaten Maluku Tenggara Barat</option><option value="459" >Kabupaten Seram Baagian Timur</option><option value="458" >Kabupaten Seram Bagian Barat</option><option value="460" >Kota Ambon</option><option value="461" >Kota Tual</option></optgroup><optgroup label="Maluku Utara"><option value="462" >Kabupaten Halmahera Barat</option><option value="465" >Kabupaten Halmahera Selatan</option><option value="463" >Kabupaten Halmahera Tengah</option><option value="467" >Kabupaten Halmahera Timur</option><option value="464" >Kabupaten Halmahera Utara</option><option value="466" >Kabupaten Kepulauan Sula</option><option value="468" >Kabupaten Pulau Moratai</option><option value="469" >Kabupaten Pulau Taliabu</option><option value="470" >Kota Ternate</option><option value="471" >Kota Tidore Kepulauan</option></optgroup><optgroup label="Nangroe Aceh Darussalam"><option value="38" >Kabupaten Aceh Barat</option><option value="39" >Kabupaten Aceh Barat Daya</option><option value="40" >Kabupaten Aceh besar </option><option value="41" >Kabupaten Aceh Jaya</option><option value="42" >Kabupaten Aceh Selatan</option><option value="43" >Kabupaten Aceh Singkil</option><option value="44" >Kabupaten Aceh Tamiang</option><option value="45" >Kabupaten Aceh Tengah</option><option value="46" >Kabupaten Aceh Tenggara</option><option value="47" >Kabupaten Aceh Timur</option><option value="48" >Kabupaten Aceh Utara</option><option value="49" >Kabupaten Bener Meriah</option><option value="50" >Kabupaten Bireuen</option><option value="51" >Kabupaten Gayo Lues</option><option value="52" >Kabupaten Nagan Raya</option><option value="53" >Kabupaten Pidie</option><option value="54" >Kabupaten Pidie Jaya</option><option value="55" >Kabupaten Simeulue</option><option value="56" >Kota Banda Aceh </option><option value="57" >Kota Langsa</option><option value="58" >Kota Lhokseumawe</option><option value="59" >Kota Sabang</option><option value="60" >Kota Subulussalam</option></optgroup><optgroup label="Nusa Tenggara Barat"><option value="282" >Kabupaten Bima</option><option value="283" >Kabupaten Dompu</option><option value="284" >Kabupaten Lombok Barat</option><option value="285" >Kabupaten Lombok Tengah</option><option value="286" >Kabupaten Lombok Timur</option><option value="287" >Kabupaten Lombok Utara</option><option value="288" >Kabupaten Sumbawa</option><option value="289" >Kabupaten Sumbawa Barat</option><option value="290" >Kota Bima</option><option value="291" >Kota Mataram</option></optgroup><optgroup label="Nusa Tenggara Timur"><option value="292" >Kabupaten Alor</option><option value="293" >Kabupaten Belu</option><option value="294" >Kabupaten Ende</option><option value="295" >Kabupaten Flores Timur</option><option value="296" >Kabupaten Kupang </option><option value="297" >Kabupaten Lembata</option><option value="298" >Kabupaten Malaka</option><option value="299" >Kabupaten Manggarai</option><option value="300" >Kabupaten Manggarai Barat</option><option value="301" >Kabupaten Manggarai Timur</option><option value="303" >Kabupaten Nagekeo</option><option value="302" >Kabupaten Ngada</option><option value="304" >Kabupaten Rote Ndao</option><option value="305" >Kabupaten Sabu Raijua</option><option value="306" >Kabupaten Sikka</option><option value="307" >Kabupaten Sumba Barat</option><option value="308" >Kabupaten Sumba Barat Daya</option><option value="309" >Kabupaten Sumba Tengah</option><option value="310" >Kabupaten Sumba Timur</option><option value="311" >Kabupaten Timor Tengah Selatan</option><option value="312" >Kabupaten Timor Tengah Utara</option><option value="313" >Kota Kupang </option></optgroup><optgroup label="Papua"><option value="472" >Kabupaten Asmat</option><option value="473" >Kabupaten Biak Numfor</option><option value="474" >Kabupaten Boven Diogel</option><option value="475" >Kabupaten Deiyai</option><option value="476" >Kabupaten Dogiyai</option><option value="477" >Kabupaten Intan Jaya</option><option value="478" >Kabupaten Jayapura</option><option value="479" >Kabupaten Jayawijaya</option><option value="480" >Kabupaten Keerom</option><option value="481" >Kabupaten Kepulauan Yapen</option><option value="482" >Kabupaten Lanny Jaya</option><option value="483" >Kabupaten Mamberamo Raya</option><option value="484" >Kabupaten Mamberamo Tengah</option><option value="485" >Kabupaten Mappi</option><option value="486" >Kabupaten Merauke</option><option value="487" >Kabupaten Mimika</option><option value="488" >Kabupaten Nabire</option><option value="489" >Kabupaten Nduga</option><option value="490" >Kabupaten Paniai</option><option value="491" >Kabupaten Pegunungan bintang</option><option value="492" >Kabupaten Puncak</option><option value="493" >Kabupaten Puncak jaya</option><option value="494" >Kabupaten Sarmi</option><option value="495" >Kabupaten Supiori</option><option value="496" >Kabupaten Tolikara</option><option value="497" >Kabupaten Waropen</option><option value="498" >Kabupaten Yahukimo</option><option value="499" >Kabupaten Yalimo</option><option value="500" >Kota Jayapura</option></optgroup><optgroup label="Papua Barat"><option value="501" >Kabupaten Fakfak</option><option value="502" >Kabupaten Kaimana</option><option value="503" >Kabupaten Manokwari</option><option value="504" >Kabupaten Manokwari Selatan </option><option value="505" >Kabupaten Maybrat</option><option value="506" >Kabupaten Pegunungan Arfak</option><option value="507" >Kabupaten Raja Ampat</option><option value="508" >Kabupaten Sorong</option><option value="509" >Kabupaten Sorong Selatan</option><option value="510" >Kabupaten Tambrauw</option><option value="511" >Kabupaten Teluk Bintuni</option><option value="512" >Kabupaten Teluk Wondama</option><option value="513" >Kota Sorong</option></optgroup><optgroup label="Papua Tengah"><option value="523" >Kabupaten Mimika</option></optgroup><optgroup label="Riau"><option value="113" >Kabupaten Bengkalis</option><option value="114" >Kabupaten Indragiri Hilir</option><option value="115" >Kabupaten Indragiri Hulu</option><option value="116" >Kabupaten Kampar</option><option value="117" >Kabupaten Kepulauan Meranti</option><option value="118" >Kabupaten Kuantan Singingi</option><option value="119" >Kabupaten Pelalawan</option><option value="120" >Kabupaten Rokan Hilir</option><option value="121" >Kabupaten Rokan Hulu</option><option value="122" >Kabupaten Siak</option><option value="123" >Kota Dumai</option><option value="124" >Kota Pekanbaru</option></optgroup><optgroup label="Sulawesi Barat"><option value="445" >Kabupaten Majene</option><option value="446" >Kabupaten Mamasa</option><option value="447" >Kabupaten Mamuju</option><option value="448" >Kabupaten Mamuju Tengah</option><option value="449" >Kabupaten Mamuju Utara</option><option value="450" >Kota Polewali Mandar</option></optgroup><optgroup label="Sulawesi Selatan"><option value="376" >Kabupaten Bantaeng</option><option value="377" >Kabupaten Barru</option><option value="378" >Kabupaten Bone Bolango</option><option value="379" >Kabupaten Bulukumba</option><option value="380" >Kabupaten Enrekang</option><option value="381" >Kabupaten Gowa</option><option value="382" >Kabupaten Jeneponto</option><option value="383" >Kabupaten Kepulauan Selayar</option><option value="384" >Kabupaten Luwu</option><option value="385" >Kabupaten Luwu Timur</option><option value="386" >Kabupaten Luwu Utara</option><option value="387" >Kabupaten Maros</option><option value="388" >Kabupaten Pangkajene dan Kepulauan</option><option value="389" >Kabupaten Pinrang</option><option value="390" >Kabupaten Sidenreng Rappang</option><option value="391" >Kabupaten Sinjai</option><option value="392" >Kabupaten Soppeng</option><option value="393" >Kabupaten Takalar</option><option value="394" >Kabupaten Tana Toraja</option><option value="395" >Kabupaten Toraja Utara</option><option value="396" >Kabupaten Wajo</option><option value="397" >Kota Makassar</option><option value="398" >Kota Palopo</option><option value="399" >Kota Parepare</option></optgroup><optgroup label="Sulawesi Tengah"><option value="417" >Kabupaten Banggai</option><option value="418" >Kabupaten Banggai Kepulauan</option><option value="419" >Kabupaten Banggai Laut</option><option value="420" >Kabupaten Buol</option><option value="421" >Kabupaten Donggala</option><option value="422" >Kabupaten Morowali</option><option value="423" >Kabupaten Morowali Utara</option><option value="424" >Kabupaten Parigi Moutong</option><option value="425" >Kabupaten Poso</option><option value="426" >Kabupaten Sigi</option><option value="427" >Kabupaten Tojo Una-Una</option><option value="428" >Kabupaten Toli-Toli</option><option value="429" >Kota Palu</option></optgroup><optgroup label="Sulawesi Tenggara"><option value="400" >Kabupaten Bombana</option><option value="401" >Kabupaten Buton</option><option value="402" >Kabupaten Buton Selatan</option><option value="403" >Kabupaten Buton Tengah</option><option value="404" >Kabupaten Buton Utara</option><option value="405" >Kabupaten Kolaka</option><option value="406" >Kabupaten Kolaka Timur</option><option value="407" >Kabupaten Kolaka Utara</option><option value="408" >Kabupaten Konawe</option><option value="409" >Kabupaten Konawe Kepulauan</option><option value="410" >Kabupaten Konawe Selatan</option><option value="411" >Kabupaten Konawe Utara</option><option value="412" >Kabupaten Muna</option><option value="413" >Kabupaten Muna Barat</option><option value="414" >Kabupaten Wakatobi</option><option value="415" >Kota Bau-Bau</option><option value="416" >Kota Kendari</option></optgroup><optgroup label="Sulawesi Utara"><option value="430" >Kabupaten Bolaang Mongondow</option><option value="431" >Kabupaten Bolaang Mongondow Selatan</option><option value="432" >Kabupaten Boolang Mongondow Timur</option><option value="433" >Kabupaten Boolang Mongondow Utara</option><option value="434" >Kabupaten Kepulauan Sangihe</option><option value="435" >Kabupaten Kepulauan Siau Tagulandang Biaro</option><option value="436" >Kabupaten Kepulauan Talaud</option><option value="437" >Kabupaten Minahasa</option><option value="438" >Kabupaten Minahasa Selatan</option><option value="439" >Kabupaten Minahasa Tenggara</option><option value="440" >Kabupaten Minahasa Utara</option><option value="441" >Kota Bitung</option><option value="442" >Kota Kotamobagu</option><option value="443" >Kota Manado</option><option value="444" >Kota Tomohon</option></optgroup><optgroup label="Sumatera Barat"><option value="94" >Kabupaten Agam</option><option value="95" >Kabupaten Dharmasraya</option><option value="96" >Kabupaten Kepulauan Mentawai</option><option value="97" >Kabupaten Lima Puluh Kota</option><option value="98" >Kabupaten Padang Pariaman</option><option value="99" >Kabupaten Pasaman</option><option value="100" >Kabupaten Pasaman barat</option><option value="101" >Kabupaten Pesisir selatan</option><option value="102" >Kabupaten Sijunjung</option><option value="103" >Kabupaten Solok</option><option value="104" >Kabupaten Solok Selatan</option><option value="105" >Kabupaten Tanah Datar</option><option value="106" >Kota Bukittinggi</option><option value="107" >Kota Padang</option><option value="108" >Kota Padang Panjang</option><option value="109" >Kota Pariaman</option><option value="110" >Kota Payakumbuh</option><option value="111" >Kota Sawahlunto</option><option value="112" >Kota Solok</option></optgroup><optgroup label="Sumatera Selatan"><option value="153" >Kabupaten Banyuasin </option><option value="154" >Kabupaten Empat Lawang</option><option value="155" >Kabupaten Lahat</option><option value="156" >Kabupaten Muara Enim</option><option value="157" >Kabupaten Musi Banyuasin</option><option value="160" >Kabupaten Ogan Ilir</option><option value="161" >Kabupaten Ogan Komering Ilir</option><option value="162" >Kabupaten Ogan Komering Ulu</option><option value="163" >Kabupaten Ogan Komering Ulu Selatan</option><option value="164" >Kabupaten Ogan Komering Ulu Timur</option><option value="165" >Kabupaten Penukal Abab Lematang Ilir</option><option value="158" >Kabupaten Rawas</option><option value="159" >Kabupaten Rawas Utara</option><option value="166" >Kota Lubuklinggau</option><option value="167" >Kota Pagar Alam</option><option value="168" >Kota Palembang</option><option value="169" >Kota Prabumulih</option></optgroup><optgroup label="Sumatera Utara"><option value="61" >Kabupaten Asahan</option><option value="62" >Kabupaten Batubara</option><option value="63" >Kabupaten Daili</option><option value="64" >Kabupaten Deli Serdang</option><option value="65" >Kabupaten Humbang Hasundutan</option><option value="66" >Kabupaten Karo</option><option value="67" >Kabupaten Labuhanbatu</option><option value="68" >Kabupaten Labuhanbatu Selatan</option><option value="69" >Kabupaten Labuhanbatu Utara</option><option value="70" >Kabupaten Langkat</option><option value="71" >Kabupaten Mandailing Natal</option><option value="72" >Kabupaten Nias</option><option value="73" >Kabupaten Nias Barat</option><option value="74" >Kabupaten Nias Selatan</option><option value="75" >Kabupaten Nias Utara</option><option value="76" >Kabupaten Padang Lawas</option><option value="77" >Kabupaten Padang Lawas Utara</option><option value="78" >Kabupaten Pakpak Bharat</option><option value="79" >Kabupaten Samosir</option><option value="80" >Kabupaten Serdang Bedagai</option><option value="81" >Kabupaten Simalungun</option><option value="82" >Kabupaten Tapanuli Selatan</option><option value="83" >Kabupaten Tapanuli Tengah</option><option value="84" >Kabupaten Tapanuli Utara</option><option value="85" >Kabupaten Toba Samosir</option><option value="86" >Kota Binjai</option><option value="87" >Kota Gunung Sitoli</option><option value="88" >Kota Medan</option><option value="89" >Kota Padangsidempuan</option><option value="90" >Kota Pematangsiantar</option><option value="91" >Kota Sibolga</option><option value="92" >Kota Tanjungbalai</option><option value="93" >Kota Tebing Tinggi</option>                    </select>                          
+                </div>                        
+            </div>  
+            <div class="form-group">
+                <label for="form_sma" class="col-lg-3 control-label pull-left">SMA Asal<span class="require">*</span></label>                        
+                <div class="col-lg-8">
+                    <select class="form-control select2" name="form_sma" id="form_sma" style="text-align: left;" data-name="kode_smu">
+                        <option value="0">-PILIH SMA-</option>
+                    </select>
+                    <div class="alert alert-info" style="margin-top: 5px; margin-bottom: 10px;">
+                        <strong>Info!</strong> Apabila sekolah tidak ada pada daftar, pilih <strong>Lainnya</strong> di paling bawah daftar sekolah. </div>
+                </div>                        
+            </div>
+            <div class="form-group" id="form-group-form_sma_lain" style="display: none;">
+                <label for="form_sma" class="col-lg-3 control-label">Nama Sekolah<span class="require">*</span></label>                        
+                <div class="col-lg-8">
+                    <input type="text" class="form-control" id="form_sma_lain" name="form_sma_lain" data-name="form_sma_lain" placeholder="Nama Sekolah">
+                </div>                        
+            </div>                                  
+            <div class="form-group" id="form-group-form_alamat_sma_lain" style="display: none;">
+                <label for="form_sma" class="col-lg-3 control-label">Alamat Sekolah<span class="require">*</span></label>                        
+                <div class="col-lg-8">
+                    <input type="text" class="form-control" id="form_alamat_sma_lain" name="form_alamat_sma_lain" data-name="form_alamat_sma_lain" placeholder="Alamat Sekolah">
+                </div>                        
+            </div>
+            <div class="form-group" id="form-group-form_telp_sma_lain" style="display: none;">
+                <label for="form_sma" class="col-lg-3 control-label">Telepon Sekolah<span class="require">*</span></label>                        
+                <div class="col-lg-8">
+                    <input type="text" class="form-control" id="form_telp_sma_lain" name="form_telp_sma_lain" data-name="form_telp_sma_lain" placeholder="Telepon Sekolah">
+                </div>                        
+            </div>
+            <div class="form-group" id="form-group-form_email_sma_lain" style="display: none;">
+                <label for="form_sma" class="col-lg-3 control-label">Email Sekolah<span class="require">*</span></label>                        
+                <div class="col-lg-8">
+                    <input type="text" class="form-control" id="form_email_sma_lain" name="form_email_sma_lain" data-name="form_email_sma_lain" placeholder="Email Sekolah">
+                </div>                        
+            </div>
+            <div class="form-group" id="form-group-form_web_sma_lain" style="display: none;">
+                <label for="form_sma" class="col-lg-3 control-label">Website Sekolah<span class="require">*</span></label>                        
+                <div class="col-lg-8">
+                    <input type="text" class="form-control" id="form_web_sma_lain" name="form_web_sma_lain" data-name="form_web_sma_lain" placeholder="Website Sekolah">
+                </div>                        
+            </div>
+            <div class="form-group">
+                <label for="form_email" class="col-lg-3 control-label pull-left">Email <span class="require">*</span></label>
+                <div class="col-lg-8">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                        <input type="email" class="form-control" id="form_email" name="email" data-name="email" placeholder="Alamat email" onkeypress="return validEmail(event)" data-name="email">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="form_nohp" class="col-lg-3 control-label pull-left">No.HP <span class="require">*</span></label>
+                <div class="col-lg-8">
+                    <input type="text" class="form-control" id="form_nohp" name="form_nohp" placeholder="Nomor Telp/HP" onkeypress="return isNumberKey(event)" data-name="telp">
+                </div>                    
+            </div>
+            <div class="form-group">
+                <label for="form_nohp" class="col-lg-3 control-label pull-left">Kelas <span class="require">*</span></label>
+                <div class="col-lg-8">
+                    <select class="form-control select2" id="form_kelasmhs" name="form_kelasmhs" placeholder="Kelas Mahasiswa" data-name="kelas_mhs">
+                        <option value="1" >Reguler</option><option value="2" >Profesional (kelas pegawai dengan waktu kuliah malam hari)</option>                    </select>
+                </div>                    
+            </div>
+            <!-- Aktifkan lagi nanti kalau sudah setting captcha -->
+            <!-- <div class="form-group">                    
+                <label for="captcha" class="col-lg-3 control-label pull-leftn  ">Captcha<span class="required"> * </span></label>
+                <div class="col-lg-8">
+                    <div class="row" style="padding-left:15px">                        
+                        <div class="g-recaptcha" data-sitekey="6Lcb55MUAAAAABTzYCHen2F6bBb2SDslOQ9cbJNI"></div>
+                    </div>
+                </div>                    
+            </div> -->
+            <div class="form-group">                    
+                <div id="bootstrap_alerts_demo">
+                </div>
+            </div>
+        </fieldset>                                        
+        <div class="row">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-3" style="margin-bottom: 20px;">
 
-    // Fungsi untuk menangani event 'Enter' pada keyboard
-    function handleKeyDown(event) {
-        if (event.key === 'Enter') {
-            sendMessage();
-        }
-    }
+                <button type="button" class="btn blue pull-left" id="btndaftar">Daftar</button>                    
+                <button type="button" class="btn default pull-right" id="btnregreset">Clear</button>                                      
 
-    // Auto slide images every 3 seconds
-    setInterval(() => {
-        const slides = document.getElementById('sliderSlides');
-        currentIndex = (currentIndex + 1) % 3; // Loop back to the first image after 3 images
-        slides.style.transform = `translateX(-${currentIndex * 100}%)`;
-    }, 3000);
-</script>
+            </div>
+        </div>                
+    </form>
+    <div class="col-md-2 col-sm-2"></div>
+</div>       
+                </div>
+            </div>
+            <!-- </div> -->
+            <!-- END CONTENT -->
 
+        </div>
+
+    <!-- Fakultas block BEGIN -->
+    <div class="team-block content content-center margin-bottom-40" id="fakultas">
+        <div class="container">
+            <h2><strong>Fakultas</strong> Ubhinus</h2>     
+            <h4>Berikut merupakan fakultas yang tersedia </h4>
+            <div class="row margin-bottom-40">
+                <div class="col-md-4 col-sm-6 col-xs-12 text-left" style="padding-top:20px;">
+                    <img src="https://pmb.ubhinus.ac.id/assets/content/default_svg/homefakultassaintek.svg" alt="Beasiswa" class="img-responsive">
+                </div>
+                <div class="col-md-8 col-sm-6 col-xs-12 text-left" id="prodi">
+                    <h2>Sains &amp Teknologi</h2>
+                    <span></span>
+                    <em class="text-center">F-SAINTEK</em>
+                    <p>Menjadi fakultas unggulan di bidang sains dan teknologi yang adaptif, inovatif, dan berdaya saing global dalam mendukung transformasi digital dan pembangunan berkelanjutan</p>
+                    <h3>Program Studi</h3>
+                    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="false">
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingOne">
+                                <h4 class="panel-title">
+                                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        S1 Informatika
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <em>Jenjang S1, Gelar : S.Kom</em>    
+                                            Menyiapkan lulusan yang mampu menghasilkan produk perangkat lunak baik berbasis web/mobile, game, jaringan komputer serta big data
+                                        </div>
+                                        <div class="col-md-6">
+                                            <img src="https://pmb.ubhinus.ac.id/assets/frontend/onepage/img/people/ti2021.png" alt="S1" class="img-responsive">
+                                        </div>
+                                    </div>
+                                    <div class="row  margin-top-20">
+                                        <div class="col-md-6">
+                                            <h5>Mata Kuliah Unggulan :</h5>
+                                            <p>
+                                                <ul class="text-left">
+                                                    <li>Pemrograman Web</li>
+                                                    <li>Pemrograman Perangkat Bergerak</li>
+                                                    <li>Rekayasa Perangkat Lunak</li>
+                                                    <li>Kecerdasan Buatan</li>
+                                                    <li>Pengolahan Citra Digital</li>
+                                                    <li>Keamanan Informasi</li>
+                                                    <li>Strategi Algoritma</li>
+                                                    <li>Komputasi Awan</li>
+                                                    <li>Visualisasi Data</li>
+                                                    <li>Internet of Things</li>
+
+                                                </ul>
+                                            </p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h5>Profil Lulusan:</h5>
+                                            <p>
+                                                <ul class="text-left">
+                                                    <li>Software Engineer</li>
+                                                    <li>Data Engineer</li>
+                                                    <li>Network Engineer</li>
+                                                </ul>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingTwo">
+                                <h4 class="panel-title">
+                                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        S1 Sistem Informasi
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseTwo" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingTwo">
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                        <em>Jenjang S1, Gelar : S.Kom</em>    
+                                        Menyiapkan lulusan yang memiliki kompetensi dalam menganalisa dan memecahkan masalah untuk pengambilan keputusan berbasis teknologi informasi bagi kebutuhan bisnis, pemerintah maupun pendidikan</div>
+                                        <div class="col-md-6"><img src="https://pmb.ubhinus.ac.id/assets/frontend/onepage/img/people/si2021.png" alt="S1" class="img-responsive"></div>
+                                    </div>
+                                    <div class="row  margin-top-20">
+                                        <div class="col-md-6">
+                                            <h5>Mata Kuliah Unggulan :</h5>
+                                            <p>
+                                            <ul class="text-left">
+                                                    <li>Manajemen Risiko</li>
+                                                    <li>Manajemen Proyek</li>
+                                                    <li>Business Intelligent</li>
+                                                    <li>E-Bisnis</li>
+                                                    <li>Sistem Penunjang Keputusan</li>
+                                                    <li>Perancangan Strategis Sistem Informasi</li>
+                                                    <li>Sistem Enterprise</li>
+                                                    <li>Tata Kelola Teknologi Informasi</li>
+                                                </ul>
+                                            </p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h5>Profil Lulusan:</h5>
+                                            <p>
+                                            <ul class="text-left">
+                                                    <li>Business Analyst</li>
+                                                    <li>System Analyst</li>
+                                                </ul>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingThree">
+                                <h4 class="panel-title">
+                                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                        D3 Sistem Informasi
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                        <em>Jenjang S1, Gelar : Amd.Kom</em>    
+                                        Menyiapkan lulusan yang mampu memberikan solusi praktis berbasis teknologi informasi untuk kebutuhan bisnis, pemerintahan maupun pendidikan</div>
+                                        <div class="col-md-6"><img src="https://pmb.ubhinus.ac.id/assets/frontend/onepage/img/people/mi2021.png" alt="S1" class="img-responsive"></div>
+                                    </div>
+                                    <div class="row  margin-top-20">
+                                        <div class="col-md-6">
+                                            <h5>Mata Kuliah Unggulan :</h5>
+                                            <p>
+                                            <ul class="text-left">
+                                                        <li>Pemrograman Web</li>
+                                                        <li>E-Commerce</li>
+                                                        <li>Pemrograman Perangkat Bergerak</li>
+                                                        <li>Keamanan Jaringan</li>
+                                                    </ul>
+                                            </p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h5>Profil Lulusan:</h5>
+                                            <p>
+                                                <ul class="text-left">
+                                                        <li>Application Developer</li>
+                                                        <li>Database Administrator</li>
+                                                        <li>Network Administrator</li>
+                                                        <li>User Interface Design</li>
+                                                    </ul>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8 col-sm-6 col-xs-12 text-left">
+                    <h2>Ekonomi Kreatif</h2>
+                    <span></span>
+                    <em class="text-center">F-EKRAF</em>
+                    <p>Menjadi fakultas unggul dalam pengembangan ekonomi kreatif berbasis teknologi dan inovasi yang berdaya saing global</p>
+                    <h3>Program Studi</h3>
+                    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingFour">
+                                <h4 class="panel-title">
+                                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+                                        S1 Desain Komunikasi Visual
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseFour" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingFour">
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                        <em>Jenjang S1, Gelar : S.Ds</em>    
+                                        Menyiapkan lulusan yang mampu mengkolaborsikan ragam media komunikasi visual untuk menghasilkan produk media digital, digital interactive dan grafis</div>
+                                        <div class="col-md-6"><img src="https://pmb.ubhinus.ac.id/assets/frontend/onepage/img/people/dkv2021.png" alt="S1" class="img-responsive"></div>
+                                    </div>
+                                    <div class="row  margin-top-20">
+                                        <div class="col-md-6">
+                                            <h5>Mata Kuliah Unggulan :</h5>
+                                            <p>
+                                            <ul class="text-left">
+                                                <li>Marketing &amp; Branding</li>
+                                                <li>Eksperimen Media Grafis</li>
+                                                <li>Desain UI/UX</li>
+                                                <li>Eksplorasi Media Rekam</li>
+                                                <li>Visual Merchandise</li>
+                                                <li>Multimedia</li>
+                                            </ul>
+                                            </p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h5>Profil Lulusan:</h5>
+                                            <p>
+                                            <ul class="text-left">
+                                                <li>Digital Media Designer</li>
+                                                <li>Graphic Designer</li>
+                                                <li>Digital Interactive Designer</li>
+                                            </ul>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingFive">
+                                <h4 class="panel-title">
+                                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                        S1 Bisnis Digital
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseFive" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingFive">
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                        <em>Jenjang S1, Gelar : S.Bns</em>    
+                                        Membekali mahasiswa dengan keterampilan bisnis berbasis teknologi, strategi digital marketing, dan manajemen produk digital. Program ini mengajarkan inovasi bisnis, pemasaran berbasis data, serta e-commerce, memastikan lulusan siap menghadapi industri digital sebagai profesional yang adaptif, inovatif, dan berorientasi solusi.</div>
+                                        <div class="col-md-6"><img src="https://pmb.ubhinus.ac.id/assets/frontend/onepage/img/people/si2021.png" alt="S1" class="img-responsive"></div>
+                                    </div>
+                                    <div class="row  margin-top-20">
+                                        <div class="col-md-6">
+                                            <h5>Mata Kuliah Unggulan :</h5>
+                                            <p>
+                                            <ul class="text-left">
+                                                <li>Strategi &amp; Inovasi Bisnis Digital (Digital Business Strategy & Innovation)</li>
+                                                <li>Pemasaran Media Sosial &amp; Konten Digital (Social Media & Content Marketing)</li>
+                                                <li>Manajemen Produk Digital &amp; Pengembangan Agile (Product Management & Agile Development)</li>
+                                                <li>Pemasaran Digital Berbasis Data (Data-Driven Digital Marketing)</li>
+                                                <li>E-Commerce &amp; Sistem Pembayaran Digital (E-Commerce & Digital Payment Systems)</li>
+                                            </ul>
+                                            </p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h5>Profil Lulusan:</h5>
+                                            <p>
+                                            <ul class="text-left">
+                                                <li>Social Media Strategist</li>
+                                                <li>Digital Marketing Specialist </li>
+                                                <li>Digital Product Manager</li>
+                                                <li>Business Development Manager</li>
+                                                <li>Scrum Product Owner</li>
+                                            </ul>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingSix">
+                                <h4 class="panel-title">
+                                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                                        S1 Perdagangan Internasional
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseSix" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSix">
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                        <em>Jenjang S1, Gelar : S.Bns</em>    
+                                        Membekali mahasiswa dengan keterampilan analisis perdagangan global, keuangan internasional, serta strategi ekspor-impor. Program ini mengajarkan regulasi perdagangan, manajemen bisnis lintas negara, serta perizinan dan waralaba, memastikan lulusan siap berkarier di pasar global sebagai profesional yang kompeten dan adaptif.</div>
+                                        <div class="col-md-6"><img src="https://pmb.ubhinus.ac.id/assets/frontend/onepage/img/people/mi2021.png" alt="S1" class="img-responsive"></div>
+                                    </div>
+                                    <div class="row  margin-top-20">
+                                        <div class="col-md-6">
+                                            <h5>Mata Kuliah Unggulan :</h5>
+                                            <p>
+                                            <ul class="text-left">
+                                                <li>Keuangan &amp; Investasi Internasional (International Finance & Investment)</li>
+                                                <li>Pemasaran Media Sosial & Konten Digital (Social Media & Content Marketing)</li>
+                                                <li>Analisis Pasar & Perdagangan Internasional (International Market & Trade Analysis)</li>
+                                                <li>Manajemen Operasi Waralaba (Franchise Operations Management) </li>
+                                                <li>Manajemen Ekspor & Impor (Export-Import Trade Management) </li>
+                                                <li>Multimedia</li>
+                                            </ul>
+                                            </p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h5>Profil Lulusan:</h5>
+                                            <p>
+                                            <ul class="text-left">
+                                                <li>International Finance Analyst</li>
+                                                <li>International Trade Consultant</li>
+                                                <li>Commerce Analyst</li>
+                                                <li>Licensing & Franchise Consultant</li>
+                                                <li>EXIM Trade Manager</li>
+                                            </ul>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 col-xs-12 text-left" style="padding-top:20px;">
+                    <img src="https://pmb.ubhinus.ac.id/assets/content/default_svg/homefakultasekraf.svg" alt="Beasiswa" class="img-responsive">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Fakultas block END -->
+    
+    <!-- Team block BEGIN -->
+    <!-- <div class="team-block content content-center margin-bottom-40" id="prodi">
+        <div class="container">
+            <h2>Program <strong>Studi</strong></h2>     
+            <h4>Berikut penjelasan beberapa program studi</h4> 
+            <div class="row">
+                <div class="col-md-3 item">
+                    <img src="https://pmb.ubhinus.ac.id/assets/frontend/onepage/img/people/mi2021.png" alt="D3" class="img-responsive">
+                    <h3>D3 Sistem Informasi</h3>
+                    <em>Jenjang D3, Gelar : Amd.Kom</em>
+                    <p style="text-align: left;">Menyiapkan lulusan yang mampu memberikan solusi praktis berbasis teknologi informasi untuk kebutuhan bisnis, pemerintahan maupun pendidikan</p>
+                    <p style="text-align: left;"><strong>Matakuliah unggulan :</strong></p>
+                    <p><ul class="text-left">
+                        <li>Pemrograman Web</li>
+                        <li>E-Commerce</li>
+                        <li>Pemrograman Perangkat Bergerak</li>
+                        <li>Keamanan Jaringan</li>
+                    </ul>
+                    </p>
+                    <p style="text-align: left;"><strong>Profil Lulusan :</strong></p>
+                    <p><ul class="text-left">
+                        <li>Application Developer</li>
+                        <li>Database Administrator</li>
+                        <li>Network Administrator</li>
+                        <li>User Interface Design</li>
+                    </ul>
+                    </p>
+                </div>
+                <div class="col-md-3 item">
+                    <img src="https://pmb.ubhinus.ac.id/assets/frontend/onepage/img/people/ti2021.png" alt="S1" class="img-responsive">
+                    <h3>S1 Informatika</h3>
+                    <em>Jenjang S1, Gelar : S.Kom</em>
+                    <p style="text-align: left;">Menyiapkan lulusan yang mampu menghasilkan produk perangkat lunak baik berbasis web/mobile, game, jaringan komputer serta big data
+                    </p>
+                    <p style="text-align: left;"><strong>Mata Kuliah Unggulan :</strong></p>
+                    <p><ul class="text-left">
+                        <li>Pemrograman Web</li>
+                        <li>Pemrograman Perangkat Bergerak</li>
+                        <li>Rekayasa Perangkat Lunak</li>
+                        <li>Kecerdasan Buatan</li>
+                        <li>Pengolahan Citra Digital</li>
+                        <li>Keamanan Informasi</li>
+                        <li>Strategi Algoritma</li>
+                        <li>Komputasi Awan</li>
+                        <li>Visualisasi Data</li>
+                        <li>Internet of Things</li>
+
+                    </ul>
+                    </p>
+                    <p style="text-align: left;"><strong>Profil Lulusan :</strong></p>
+                    <p><ul class="text-left">
+                        <li>Software Engineer</li>
+                        <li>Data Engineer</li>
+                        <li>Network Engineer</li>
+                    </ul>
+                    </p>
+                </div>
+                <div class="col-md-3 item">
+                    <img src="https://pmb.ubhinus.ac.id/assets/frontend/onepage/img/people/dkv2021.png" alt="S1" class="img-responsive">
+                    <h3>S1 Desain Komunikasi Visual</h3>
+                    <em>Jenjang S1, Gelar : S.Ds</em>
+                    <p style="text-align: left;">Menyiapkan lulusan yang mampu mengkolaborsikan ragam media komunikasi visual untuk menghasilkan produk media digital, digital interactive dan grafis
+                    </p>
+                    <p style="text-align: left;"><strong>Mata Kuliah Unggulan :</strong></p>
+                    <p><ul class="text-left">
+                        <li>Marketing &amp; Branding</li>
+                        <li>Eksperimen Media Grafis</li>
+                        <li>Desain UI/UX</li>
+                        <li>Eksplorasi Media Rekam</li>
+                        <li>Visual Merchandise</li>
+                        <li>Multimedia</li>
+                    </ul></p>
+                    <p style="text-align: left;"><strong>Profil Lulusan :</strong></p>
+                    <p><ul class="text-left">
+                        <li>Digital Media Designer</li>
+                        <li>Graphic Designer</li>
+                        <li>Digital Interactive Designer</li>
+                    </ul></p>
+                </div>
+                <div class="col-md-3 item">
+                    <img src="https://pmb.ubhinus.ac.id/assets/frontend/onepage/img/people/si2021.png" alt="sistem informasi" class="img-responsive">
+                    <h3>S1 Sistem Informasi</h3>
+                    <em>Jenjang S1, Gelar : S.KOM</em>
+                    <p style="text-align: left;">Menyiapkan lulusan yang memiliki kompetensi dalam menganalisa dan memecahkan masalah untuk pengambilan keputusan berbasis teknologi informasi bagi kebutuhan bisnis, pemerintah maupun pendidikan</p>
+                    <p style="text-align: left;"><strong>Mata Kuliah Unggulan :</strong></p>
+                    <p><ul class="text-left">
+                        <li>Manajemen Risiko</li>
+                        <li>Manajemen Proyek</li>
+                        <li>Business Intelligent</li>
+                        <li>E-Bisnis</li>
+                        <li>Sistem Penunjang Keputusan</li>
+                        <li>Perancangan Strategis Sistem Informasi</li>
+                        <li>Sistem Enterprise</li>
+                        <li>Tata Kelola Teknologi Informasi</li>
+                    </ul></p>
+                    <p style="text-align: left;"><strong>Profil Lulusan :</strong></p>
+                    <p><ul class="text-left">
+                        <li>Business Analyst</li>
+                        <li>System Analyst</li>
+                    </ul></p>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <!-- Team block END -->
+
+    <!-- JALUR PENDIDIKAN block BEGIN -->
+    <div class="services-block content content-center" id="jenjang">
+        <div class="container">
+            <h2>Jenjang <strong>Pendidikan</strong></h2>
+            <h4>Ada beberapa jenjang pendidikan yang tersedia di Universitas Bhinneka Nusantara :</h4>
+
+            <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-12 item">
+                    <i class="fa fa-graduation-cap"></i>
+                    <h3>Diploma 3</h3>
+                    <ul class="list-unstyled">
+                        <li>D3 Sistem Informasi</li>
+                    </ul>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-12 item">
+                    <i class="fa fa-graduation-cap"></i>
+                    <h3>STRATA 1</h3>
+                    <ul class="list-unstyled">
+                        <li> S1 Informatika </li>
+                        <li> S1 Desain Komunikasi Visual</li>	            
+                        <li> S1 Sistem Informasi</li>
+                        <li> S1 Bisnis Digital</li>
+                        <li> S1 Perdagangan Internasional</li>
+                    </ul>
+                </div>       
+            </div>
+        </div>
+    </div>
+    <!-- JALUR PENDIDIKAN block END -->
+
+    <!-- BEGIN JALUR PENERIMAAN -->
+    <div class="prices-block content" id="jalur" style="background-color:#FFFFFF;">
+        <div class="container">
+            <h2 class="margin-bottom-50"><strong>Jalur</strong> Penerimaan</h2>	
+            <div class="row mix-block margin-bottom-40">
+                <!-- TABS -->
+                <div class="col-md-12 tab-style-1">
+                    <ul class="nav nav-tabs ">
+                        <li class="active jalur">
+                            <a href="#tab-1" data-toggle="tab">
+                                <h3>Jalur Undangan</h3>
+                                <p>&nbsp;</p>            
+                            </a></li>
+                        <li class="jalur"><a href="#tab-2" data-toggle="tab"><h3>Jalur Prestasi</h3><p>Akademik & Non-Akademik</p></a></li>
+                        <li class="jalur"><a href="#tab-3" data-toggle="tab"><h3>Jalur Beasiswa</h3><p>KIP Kuliah</p></a></li>
+                        <li class="jalur"><a href="#tab-4" data-toggle="tab"><h3>Jalur Reguler</h3><p>&nbsp;</p></a></li>
+                    </ul>
+
+
+                    <div class="tab-content" style="background-color:white;padding:10px;margin-bottom:24px;">		
+
+                        <!-- BEGIN JALUR UNDANGAN -->
+                        <div class="tab-pane row fade in active" id="tab-1">
+                            <div class="col-md-3 col-sm-3">			  
+                                <img class="img-responsive" src="https://pmb.ubhinus.ac.id//assets/frontend/onepage/img/jalur_undangan.jpg" alt="">			  
+                            </div>
+                            <div class="col-md-9 col-sm-9">
+                                <p class="margin-bottom-10">
+                                    <b>JADWAL :</b>			
+                                <ul style="text-align:left;">
+                                    <li>Pendaftaran mulai 1 September 2024 – 28 Februari 2025</li>
+                                </ul>              	
+                                <b><p>FASILITAS :</p></b>
+                                <ul style="text-align:left">
+                                    <li>Bebas tes masuk</li>			
+                                    <li>Subsidi up to 60%</li>
+                                </ul>
+                                <b><p>PERSYARATAN :</p></b>
+                                <ul style="text-align:left"> 
+                                    <li>Pendaftaran online di website <a href="https://pmb.ubhinus.ac.id/index.php">pmb.ubhinus.ac.id</a></li>
+                                    <li>Melakukan pembayaran sebesar Rp 200.000,- ke rekening :</li>
+                                    <ul>
+                                        <li>BRI nomor rekening 0429 0100 0536 302 a.n STIKI Malang</li>
+                                        <li>Mandiri nomor rekening 114 0002 562 525 a.n STIKI Malang</li>
+                                        <li>BCA nomor rekening 440 3000 909 a.n STIKI</li>
+                                    </ul>
+                                    <li>Scan rapor nilai semester 1-4 (semester 5 & 6 bisa menyusul)</li>
+                                    <li>Scan akta kelahiran, KTP pendaftar, KTP orang tua, dan Kartu Keluarga</li>
+                                    <li>Semua jurusan (SMA, SMK, MA), nilai Matematika dan Bahasa Inggris minimal KKM+5</li>
+                                    <li>Sertifikat juara lomba 1/2/3 tingkat regional/nasional/internasional</li>
+                                    <li>Pendaftaran melalui Guru BK atau secara mandiri</li>
+                                    <li>Fresh graduate</li>
+
+                                </ul>
+                                </p>
+                                <!-- <b><p>Daftar sekolah yang telah memiliki kerja sama SMA/SMK untuk jalur undangan dapat dilihat <a href="javascript:;" data-aksi="open_kerjasamasma">disini</a></p></b>			   -->
+                            </div>
+                        </div>
+                        <!-- END JALUR UNDANGAN -->
+
+                        <!-- BEGIN JALUR PRESTASI -->
+                        <div class="tab-pane row fade" id="tab-2">
+                            <div class="col-md-3 col-sm-3">			  
+                                <img class="img-responsive" src="https://pmb.ubhinus.ac.id//assets/frontend/onepage/img/jalur_prestasi.jpg" alt="">			  
+                            </div>
+                            <div class="col-md-9 col-sm-9">
+                                <p>
+                                    <b>JADWAL :</b>
+                                <ul style="text-align:left;">
+                                    <li>Pendaftaran mulai 1 Maret 2025 – 31 Mei 2025</li>
+                                </ul>              
+                                <b><p>FASILITAS :</p></b>
+                                <ul style="text-align:left">
+                                    <li>Bebas tes masuk</li>
+                                    <li>Subsidi up to 30%</li>
+                                </ul>	                        
+                                <b><p>PERSYARATAN</p></b>
+                                    <li>Pendaftaran online di website <a href="https://pmb.ubhinus.ac.id/index.php">pmb.ubhinus.ac.id</a></li>
+                                    <li>Melakukan pembayaran sebesar Rp 200.000,- ke rekening :</li>
+                                    <ul>
+                                        <li>BRI nomor rekening 0429 0100 0536 302 a.n STIKI Malang</li>
+                                        <li>Mandiri nomor rekening 114 0002 562 525 a.n STIKI Malang</li>
+                                        <li>BCA nomor rekening 440 3000 909 a.n STIKI</li>
+                                    </ul>
+                                    <li>Scan rapor nilai semester 1-4 (semester 5 & 6 bisa menyusul)</li>
+                                    <li>Scan akta kelahiran, KTP pendaftar, KTP orang tua, dan Kartu Keluarga</li>
+                                    <li>Semua jurusan (SMA, SMK, MA), nilai Matematika dan Bahasa Inggris minimal KKM+5</li>
+                                    <li>Sertifikat juara lomba 1/2/3 tingkat regional/nasional/internasional</li>
+                                    <li>Bebas tes masuk</li>
+                                    <li>Pendaftaran melalui Guru BK atau secara mandiri</li>
+                                    <li>Surat rekomendasi kepala sekolah</li>
+                                    <li>Fresh graduate</li>
+                                </ul>
+                                </p>
+                            </div>
+
+                        </div>
+                        <!-- END JALUR PRESTASI -->
+
+                        <!-- BEGIN JALUR BEASISWA -->
+                        <div class="tab-pane row fade" id="tab-3">
+                            <div class="col-md-3 col-sm-3">		  
+                                <img class="img-responsive" src="https://pmb.ubhinus.ac.id//assets/frontend/onepage/img/jalur_beasiswa.jpg" alt="">			  
+                            </div>
+                            <div class="col-md-9 col-sm-9">
+                                <p>
+                                    <b>JADWAL :</b>
+                                <ul style="text-align:left;">
+                                    <li>Pendaftaran mulai 1 September 2024 sampai kuota terpenuhi</li>					
+                                </ul>              
+                                <b><p>FASILITAS :</p></b>
+                                <ul style="text-align:left">
+                                    <li>Bebas biaya kuliah dan mendapatkan uang saku sesuai ketentuan dari pemerintah</li>					
+                                </ul>	                        
+                                <b><p>PERSYARATAN:</p></b>
+                                <ol>
+                                    <li><strong>Persyaratan Akademik</strong>
+                                        <ul>
+											<li>Fresh graduate lulusan tahun 2023/2024 atau maksimal lulusan 2 tahun sebelumnya (maks. Lulusan tahun 2021).</li>
+											<li>Wajib Terdaftar di sistem KIP Kuliah Kemendikbud dengan memasukkan NPSN,NISN, dan NIK yang Valid.</li>
+											<li>Nilai Bahasa Inggris & Matematika semester 1-4 minimal KKM+5 ( untuk jurusan Informatika,Sistem Informasi, dan D3 Sistem Informasi )</li>
+											<li>Nilai Bahasa Inggris semester 1-4 minimal KKM+5 (untuk jurusan Desain Komunikasi Visual)</li>
+											<li>Mengikuti Tes Akademik dan Tes Wawancara</li>
+											<li>Harus mengikuti dan lulus seleksi Try Out Basket (jika memilih jalur basket)</li>
+											<li>Mendaftar secara online di website pmb.ubhinus.ac.id</li>
+                                        </ul>
+                                    </li>
+									<li><strong>Berkas</strong>
+                                        <ul>
+											<li>SCAN Salinan rapor kelas X-XI (terlegalisasi)</li>
+											<li>SCAN Salinan SKHUN & Ijazah (terlegalisasi)</li>
+											<li>SCAN 1 Lembar Kartu KIP / SKTM (Surat Keterangan Tidak Mampu) dari kelurahan / desa setempat</li>
+											<li>SCAN Salinan Akte Kelahiran</li>
+											<li>SCAN Salinan Kartu Keluarga, KTP pendaftar, KTP ayah & ibu</li>
+											<li>Pasfoto uk. 3x4 menggunakan kemeja putih polos (latar biru untuk S1 dan merah untuk D3)</li>
+											<li>SCAN Surat rekomendasi dari kepala sekolah (bila sudah dinyatakan diterima)</li>
+											<li>SCAN SKHUN/Surat Keterangan Lulus Sementara (Jika SKHUN belum keluar), 1 lembar</li>
+											<li>SCAN Salinan Sertifikat Penghargaan Tingkat Nasional / Internasional yang disahkan oleh Kepala Sekolah, 1 lembar (Bila ada)</li>
+											<!-- <li>SCAN Surat Keterangan Tidak Mampu yg dikeluarkan oleh kelurahan setempat</li>-->
+											<li>SCAN Rekening Listrik 3 bulan terakhir (jika dialiri listrik)</li>
+											<li>SCAN Rekening PDAM 3 bulan terakhir (jika menggunakan PDAM)</li>
+											<li>SCAN Salinan pembayaran Pajak Bumi & Bangunan (PBB) terbaru</li>
+											<li>SCAN Slip gaji orang tua 3 bulan terakhir / Surat Keterangan Penghasilan Dari Kelurahan / desa setempat</li>
+											<li>Foto rumah (tampak rumah bagian depan, ruang tamu, kamar tidur, ruang keluarga, dapur, kamar mandi)</li>
+											<li>Portofolio Karya (jika memilih jurusan Desain Komunikasi Visual)</li>
+											<li>Semua berkas dikumpulkan dalam bentuk softfile (JPG / PNG)</li>
+                                        </ul>
+                                    </li>
+                                </ol>
+                                </p>
+                            </div>
+                        </div>
+                        <!-- END JALUR BEASISWA -->
+
+                        <!-- BEGIN JALUR REGULER -->
+                        <div class="tab-pane row fade" id="tab-4">
+                            <div class="col-md-3 col-sm-3">			  
+                                <img class="img-responsive" src="https://pmb.ubhinus.ac.id//assets/frontend/onepage/img/jalur_reguler.jpg" alt="">			  
+                            </div>
+                            <div class="col-md-9 col-sm-9">
+								<p class="margin-bottom-10">
+                                    <b>JADWAL :</b>			
+                                <ul style="text-align:left;">
+                                    <li>Pendaftaran mulai 1 September 2024 – 31 Agustus 2025</li>
+                                </ul>              	
+                                <b><p>FASILITAS :</p></b>
+                                <ul style="text-align:left">
+									<li>Subsidi uang pangkal (S&K berlaku)</li>
+                                </ul>
+                                <b><p>PERSYARATAN :</p></b>
+                                <ul style="text-align:left">
+                                    <li>Pendaftaran online di website <a href="https://pmb.ubhinus.ac.id/index.php">pmb.ubhinus.ac.id</a></li>
+                                    <li>Melakukan pembayaran sebesar Rp 200.000,- ke rekening :</li>
+                                    <ul>
+                                        <li>BRI nomor rekening 0429 0100 0536 302 a.n STIKI Malang</li>
+                                        <li>Mandiri nomor rekening 114 0002 562 525 a.n STIKI Malang</li>
+                                        <li>BCA nomor rekening 440 3000 909 a.n STIKI</li>
+                                    </ul>
+                                    <li>Scan rapor nilai semester 1-4 (semester 5 & 6 bisa menyusul)</li>
+                                    <li>Scan akta kelahiran, KTP pendaftar, KTP orang tua, dan Kartu Keluarga</li>
+                                    <li>Semua jurusan (SMA, SMK, MA), nilai Matematika dan Bahasa Inggris minimal KKM+5</li>
+                                    <li>Mengikuti tes online</li>
+                                    <li>Pendaftaran melalui guru BK/secara mandiri</li>
+                                </ul>
+                                </p>		
+                            </div>
+                        </div>
+                        <!-- END JALUR REGULER -->
+
+                    </div>		
+                </div>
+                <!-- END TABS -->
+
+            </div>
+        </div>
+    </div>
+    <!-- END JALUR PENERIMAAN -->
+
+
+    
+
+    <!-- Message block BEGIN -->
+    <div class="message-block content content-center valign-center" id="message-block">
+        <div class="valign-center-elem">
+            <h2><strong>BACHELOR OF INFORMATICS</strong>DOUBLE DEGREE PROGRAM 2+2 STIKI &amp; SUNMON UNIVERSITY KOREA</h2>
+            <em>This program gives the student a chance to study in two university, <br/>STIKI and Sun Moon University at the first two years of their study informatics at STIKI that is continued<br/>at Sun Moon University at the next two years. At the end of their study, <br/>the student will get two academic titles of Bachelors of Informatics both <br/>from STIKI and Sun Moon University</em>
+        </div>
+    </div>
+    <!-- Message block END -->  
+
+    <!-- Checkout block BEGIN
+    <div class="checkout-block content">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10">
+                    <h2>PROGRAM PASCA SARJANA</h2>
+                </div>
+                <div class="col-md-2 text-right">
+                    <a href="#daftar" class="btn btn-primary">Daftar Sekarang</a>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <!-- Checkout block END -->
+    <!-- Facts block BEGIN -->
+    <div class="facts-block content content-center" id="facts-block">
+        <div>    
+            <h2>Internship Program<br/>&amp; Credit Transfer Program</h2>
+        </div>
+        <!-- <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="item">            
+                        <p>MAGISTER<br/>TEKNOLOGI INFOMRASI</p>
+                        <strong>M.TI</strong>
+                    </div>
+                    <br>
+                    <a href="http://pmb.stiki.ac.id/assets/frontend/brosur/brosur_s2.jpg" target="_blank" class="btn btn-xl btn-primary"><i class="fa fa-download"></i> DOWNLOAD BROSUR</a>
+                    <br><br>
+                </div>        
+            </div>
+        </div>-->
+    </div>
+    <!-- Facts block END -->  
+
+    <!-- BEASISWA block BEGIN -->
+    <div class="choose-us-block content text-center margin-bottom-40" id="beasiswa">
+        <div class="container">
+            <h2>Beasiswa</h2>
+            <h4>Ada beberapa beasiswa yang bisa diperoleh di Universitas Bhinneka Nusantara (UBHINUS), diantaranya adalah :</h4>
+            <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-12 text-left" style="padding-top:50px;">
+                    <img src="https://pmb.ubhinus.ac.id/assets/content/default_svg/home_beasiswa.svg" alt="Beasiswa" class="img-responsive">
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-12 text-left">
+                    <div class="panel-group" id="accordion1">
+                        <!--            
+                                    <div class="panel panel-default">
+                                      <div class="panel-heading">
+                                        <h5 class="panel-title">
+                                          <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_2">Jalur Beasiswa Penuh Olahraga Januari s/d Juli 2016</a>
+                                        </h5>
+                                      </div>
+                                      <div id="accordion1_2" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                          <p>Syarat Masuk :</p>
+                                          <p>Untuk Program Studi Teknik Informatika</p>
+                                          <p>
+                                          <ul>
+                                            <li>Nilai raport Bahasa Inggris, Matematika, Penjas (KKM+5)</li>
+                                            <li>Nilai UAN Min 8 (Bahasa Inggris dan Matematika)</li>
+                                            <li>SMA dengan jurusan IPA, SMK dengan jurusan TKJ, RPL</li>
+                                          </ul>
+                                          </p>
+                                        </div>
+                                      </div>
+                                    </div>
+                        -->            
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h5 class="panel-title">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion1" href="#accordion1_2">BEASISWA KIP KULIAH</a>
+                                </h5>
+                            </div>
+                            <div id="accordion1_2" class="panel-collapse collapse in">
+                                <div class="panel-body">
+                                <p>
+                                    <b>JADWAL :</b>
+                                <ul style="text-align:left;">
+                                    <li>Pendaftaran mulai 1 Oktober 2024 sampai kuota terpenuhi</li>					
+                                </ul>              
+                                <b><p>FASILITAS :</p></b>
+                                <ul style="text-align:left">
+                                    <li>Bebas biaya kuliah dan mendapatkan uang saku sesuai ketentuan dari pemerintah</li>					
+                                </ul>	                        
+                                <b><p>PERSYARATAN:</p></b>
+                                <ol>
+                                    <li><strong>Persyaratan Akademik</strong>
+                                        <ul>
+											<li>Fresh graduate lulusan tahun 2023/2024 atau maksimal lulusan 2 tahun sebelumnya (maks. Lulusan tahun 2023).</li>
+											<li>Wajib Terdaftar di sistem KIP Kuliah Kemendikbud dengan memasukkan NPSN,NISN, dan NIK yang Valid.</li>
+											<li>Nilai Bahasa Inggris & Matematika semester 1-4 minimal KKM+5 ( untuk jurusan Informatika, Sistem Informasi, dan D3 Sistem Informasi )</li>
+											<li>Nilai Bahasa Inggris semester 1-4 minimal KKM+5 (untuk jurusan Desain Komunikasi Visual)</li>
+											<li>Mengikuti Tes Akademik dan Tes Wawancara</li>
+											<li>Harus mengikuti dan lulus seleksi Try Out Basket (jika memilih jalur basket)</li>
+											<li>Mendaftar secara online di website ubhinus.stiki.ac.id</li>
+                                        </ul>
+                                    </li>
+									<li><strong>Berkas</strong>
+                                        <ul>
+											<li>SCAN Salinan rapor kelas X-XI (terlegalisasi)</li>
+											<li>SCAN Salinan SKHUN & Ijazah (terlegalisasi)</li>
+											<li>SCAN 1 Lembar Kartu KIP / SKTM (Surat Keterangan Tidak Mampu) dari kelurahan / desa setempat</li>
+											<li>SCAN Salinan Akte Kelahiran</li>
+											<li>SCAN Salinan Kartu Keluarga, KTP pendaftar, KTP ayah & ibu</li>
+											<li>Pasfoto uk. 3x4 menggunakan kemeja putih polos (latar biru untuk S1 dan merah untuk D3)</li>
+											<li>SCAN Surat rekomendasi dari kepala sekolah (bila sudah dinyatakan diterima)</li>
+											<li>SCAN SKHUN/Surat Keterangan Lulus Sementara (Jika SKHUN belum keluar), 1 lembar</li>
+											<li>SCAN Salinan Sertifikat Penghargaan Tingkat Nasional / Internasional yang disahkan oleh Kepala Sekolah, 1 lembar (Bila ada)</li>
+											<!-- <li>SCAN Surat Keterangan Tidak Mampu yg dikeluarkan oleh kelurahan setempat</li>-->
+											<li>SCAN Rekening Listrik 3 bulan terakhir (jika dialiri listrik)</li>
+											<li>SCAN Rekening PDAM 3 bulan terakhir (jika menggunakan PDAM)</li>
+											<li>SCAN Salinan pembayaran Pajak Bumi & Bangunan (PBB) terbaru</li>
+											<li>SCAN Slip gaji orang tua 3 bulan terakhir / Surat Keterangan Penghasilan Dari Kelurahan / desa setempat</li>
+											<li>Foto rumah (tampak rumah bagian depan, ruang tamu, kamar tidur, ruang keluarga, dapur, kamar mandi)</li>
+											<li>Portofolio Karya (jika memilih jurusan Desain Komunikasi Visual)</li>
+											<li>Semua berkas dikumpulkan dalam bentuk softfile (JPG / PNG)</li>
+                                        </ul>
+                                    </li>
+                                </ol>
+                                </p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- BEASISWA block END -->
+
+
+   <!-- PANDUAN block BEGIN -->
+    <div class="choose-us-block content text-center margin-bottom-40" id="panduan" style="background:#f6f6f6;">
+        <div class="container">
+            <h2>Panduan <strong>Pendaftaran</strong></h2>      
+            <div class="row">        
+                <div class="col-md-12 col-sm-12 col-xs-12 text-left">
+                    <ul class="timeline">
+                        <li>
+                            <p><strong>Persiapan sebelum pendaftaran</strong></p>   <!-- nomer 1 -->
+                                            <p>Sebelum melakukan pendaftaran daring pastikan sudah memiliki beberapa pindaian berkas (scanned file) dalam format .pdf</p>
+                                            <p>
+                                            <ul>
+                                                <li>Akte kelahiran</li>
+												<li>Pasfoto 3x4 (latar belakang S1: Biru & D3: Merah) Maksimal 2MB</li>
+												<li>SCAN rapor asli kelas X-XI atau SCAN fotocopy rapor yang (terlegalisasi).</li>
+												<li>SCAN SKHUN & Ijazah asli atau SCAN fotocopy yang(terlegalisasi).</li>
+												<li>SCAN Kartu Keluarga, KTP ayah & ibu, KTP/Kartu Pelajar Pendaftar pendaftar.</li>
+												<li>SCAN Akte kelahiran</li>
+												<li>File Pasfoto uk. 3x4 menggunakan kemeja putih polos (latar S1, biru; D3, merah)</li>
+												<li>Semua file yang diunggah harus berupa format PDF</li>
+                                            </ul>
+                            </p>
+                        </li>
+                        <li>
+                            <p><strong>Biaya Pendaftaran</strong></p>  <!-- nomer 3 -->
+                                            <p>
+                                            <ul>
+                                                <li><p>Pembayaran uang pendaftaran mahasiswa baru STIKI untuk S1 & D3 dapat dilakukan melalui bank ke <strong>nomor rekening BCA a.n STIKI Malang: 440.3000.909</strong></p></li>                                
+                                                <li><p>Setelah transfer, bukti transfer pembayaran dipindai atau difoto, kemudian diunggah melalui laman PMB ubhinus.stiki.ac.id atau via <b>Whatsapp</b> ke nomor <strong>0341560823</strong></p></li>
+                                            </ul>
+                                            </p>
+                        </li>
+                        <li>
+                        <p><strong>Cara pendaftaran</strong></p>  <!-- nomer 3 -->
+                                            <p>Pendaftaran dapat dilakukan dengan mengisi formulir Pendaftaran PMB Online yaitu:</p>
+                                            <p>Isi data calon mahasiswa, data orang tua, pilihan program studi, kemudian unggah dokumen.</p>
+                                            <p><strong>Perhatian:</strong> Pastikan <strong>nama pendaftar</strong> yang di-entry sesuai dengan nama yang tertera di Akte Kelahiran. Begitu juga dengan nama orangtua harus sesuai dengan yang tertera di Akte Kelahiran</p>
+                                            <p>Petunjuk pengisian:</p>
+                                            <p>
+                                            <ul>
+                                                <li>Klik pada salah satu pilihan berikut, misalnya S1 untuk Informatika, dan Pilih D3 untuk Sistem Informasi</li>
+                                                <li>Isi nama lengkap pada kotak entri / kosong, dengan huruf besar</li>
+                                                <li>Harap dicek ulang untuk pertanyaan yang bertanda * (asteriks) berarti tidak boleh kosong, wajib diisi</li>
+                                                <li>Pastikan nomor telepon yang Anda isi adalah nomor yang dapat dihubungi untuk konfirmasi.</li>
+                                                <li>Klik tombol selanjutnya untuk menuju pengisian Langkah 2 dan Langkah 3</li>
+                                            </ul>
+                                            </p>
+                        </li>
+                        <li>
+                        <p><strong>Pengunggahan Dokumen</strong></p>   <!-- nomer 4 -->
+                                            <p>
+                                            <ul>
+                                                <li>Setelah pengisian data pada Langkah 1 hingga Langkah 3, selanjutnya unggah dokumen berupa pindaian berkas (seperti : <strong>Akta Kelahiran</strong>) yang telah di scan/disiapkan dengan memilih Browse (ukuran file maksimal 2MB)</li>
+                                                <li>Pilih Folder, pilih File, klik nama berkas, pilih Open</li>
+                                                <li>Masukan kode rahasia yang tertera pada layar</li>
+                                                <li>Pilih Daftar</li>
+                                            </ul>
+                                            </p>
+                        </li>
+                        <li><p><strong>Konfirmasi pendaftaran</strong></p>
+                                            <p>Setelah mendaftar, tim PMB UBHINUS akan menghubungi Anda melalui surel atau telepon untuk pemberitahuan tentang tes masuk ataupun proses Daftar Ulang. Karena itu, pastikan alamat surel dan nomor telepon Anda <strong>aktif</strong> dan <strong>dapat dihubungi</strong></p>
+                                        </li>
+                                        <li><p><strong>Biaya Pendaftaran</strong></p>
+                                            <p><p>Untuk semua jalur sebesar <strong>Rp. 200.000</strong></p></p>
+                                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- PANDUAN block END -->
+
+    <!-- Testimonials block BEGIN -->
+    <div class="testimonials-block content content-center margin-bottom-65" style="padding-bottom: 60px;">
+        <div class="container">
+            <h2>Testimoni</h2>
+            <h4>Berikut Testimoni dari para alumni dan Mahasiswa UBHINUS</h4>
+            <div class="slick-testimoni">
+                <div><img src="https://pmb.ubhinus.ac.id/assets/frontend/onepage/img/testimoni/13.jpg" style="width:100%"></div>    
+                <div><img src="https://pmb.ubhinus.ac.id/assets/frontend/onepage/img/testimoni/14.jpg" style="width:100%"></div>
+            </div>
+        </div>
+    </div>
+    <!-- Testimonials block END -->
+
+	<!-- VIDEOS block BEGIN -->
+    <div class="testimonials-block content content-center margin-bottom-65" style="padding-bottom: 60px; background:#f6f6f6;" >
+        <div class="container">
+            <h2>Video</h2>
+            <h4>Berikut beberapa video kegiatan dan karya</h4>
+            <div class="slick-videos">
+                <div><iframe width="350" height="175" src="https://www.youtube.com/embed/Ht-GkJb73KA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+                <div><iframe width="350" height="175" src="https://www.youtube.com/embed/e8Qbu5IfAbU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+                <div><iframe width="350" height="175" src="https://www.youtube.com/embed/QQJkrqHgsek" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+            </div>
+        </div>
+    </div>
+    <!-- VIDEOS block END -->
+    <!-- BEGIN UNIVERSITAS PARTNER --> 
+
+    <!-- END UNIVERSITAS PARTNER -->   
+
+    <!-- Partners block BEGIN -->
+    <div class="partners-block content" style="background:#fff;">
+        <div class="container">
+            <h2 class="margin-bottom-50">Kerja Sama Universitas</h2>
+        </div> 
+        <div class="container margin-bottom-50">
+            <div class="slick-partners">
+                <div><img src="https://pmb.ubhinus.ac.id/assets/frontend/onepage/img/partners/A.jpg" style="width:100%"></div>
+                <div><img src="https://pmb.ubhinus.ac.id/assets/frontend/onepage/img/partners/B.jpg" style="width:100%"></div>
+                <div><img src="https://pmb.ubhinus.ac.id/assets/frontend/onepage/img/partners/C.jpg" style="width:100%"></div>
+                <div><img src="https://pmb.ubhinus.ac.id/assets/frontend/onepage/img/partners/D.jpg" style="width:100%"></div>
+				<div><img src="https://pmb.ubhinus.ac.id/assets/frontend/onepage/img/partners/E.jpg" style="width:100%"></div>
+                <div><img src="https://pmb.ubhinus.ac.id/assets/frontend/onepage/img/partners/F.jpg" style="width:100%"></div>
+				<div><img src="https://pmb.ubhinus.ac.id/assets/frontend/onepage/img/partners/G.jpg" style="width:100%"></div>
+            </div>    
+        </div>
+    </div>
+    <!-- Partners block END -->
+
+     <!-- Galeri block BEGIN -->
+     <div class="portfolio-block content content-center" id="galeri" style="background:#f6f6f6">
+        <div class="container">
+            <h2 class="margin-bottom-50">Galeri</h2>
+        </div>    
+        <div class="row" style="margin-bottom: 0px;">
+            <div class="item col-md-3 col-sm-6 col-xs-12">
+                <img src="https://pmb.ubhinus.ac.id/assets/frontend/onepage/img/portfolio/2021/1a.jpg" alt="NAME" class="img-responsive">
+                <a href="https://pmb.ubhinus.ac.id/assets/frontend/onepage/img/portfolio/2021/1a.jpg" title="Hanbat University" class="zoom valign-center">
+                    <div class="valign-center-elem">
+                        <strong>Hanbat University</strong>
+                        <em>Transfer Credit Program</em>
+                        <b>Lihat</b>
+                    </div>
+                </a>
+            </div>
+            <div class="item col-md-3 col-sm-6 col-xs-12">
+                <img src="https://pmb.ubhinus.ac.id/assets/frontend/onepage/img/portfolio/2021/2a.jpg" alt="NAME" class="img-responsive">
+                <a href="https://pmb.ubhinus.ac.id/assets/frontend/onepage/img/portfolio/2021/2a.jpg" title="Aptikom" class="zoom valign-center">
+                    <div class="valign-center-elem">
+                        <strong>Aptikom</strong>
+                        <em>Workshop Board Game</em>
+                        <b>Lihat</b>
+                    </div>
+                </a>
+            </div>
+            <div class="item col-md-3 col-sm-6 col-xs-12">
+                <img src="https://pmb.ubhinus.ac.id/assets/frontend/onepage/img/portfolio/2021/3a.jpg" alt="NAME" class="img-responsive">
+                <a href="https://pmb.ubhinus.ac.id/assets/frontend/onepage/img/portfolio/2021/3a.jpg" title="China" class="zoom valign-center">
+                    <div class="valign-center-elem">
+                        <strong>China</strong>
+                        <em>International Seminar Series</em>
+                        <b>Lihat</b>
+                    </div>
+                </a>
+            </div>
+            <div class="item col-md-3 col-sm-6 col-xs-12">
+                <img src="https://pmb.ubhinus.ac.id/assets/frontend/onepage/img/portfolio/2021/4a.jpg" alt="NAME" class="img-responsive">
+                <a href="https://pmb.ubhinus.ac.id/assets/frontend/onepage/img/portfolio/2021/4a.jpg" title="DKVOLUTION 4.0" class="zoom valign-center">
+                    <div class="valign-center-elem">
+                        <strong>DKVOLUTION 4.0</strong>
+                        <em>Pameran Tugas Akhir</em>
+                        <b>Lihat</b>
+                    </div>
+                </a>
+            </div>
+            <!-- <div class="item col-md-3 col-sm-6 col-xs-12">
+                <img src="https://pmb.ubhinus.ac.id/assets/frontend/onepage/img/portfolio/2019/Guest Lecture Emotional Intelligence.jpg" alt="NAME" class="img-responsive">
+                <a href="https://pmb.ubhinus.ac.id/assets/frontend/onepage/img/portfolio/2019/Guest Lecture Emotional Intelligence.jpg" title="Kuliah Tamu Era Industri 4.0" class="zoom valign-center">
+                    <div class="valign-center-elem">
+                        <strong>Guest Lecture Emotional Intelligence</strong>
+                        <em>Kegiatan Akademis</em>
+                        <b>Lihat</b>
+                    </div>
+                </a>
+            </div>-->
+        </div>
+
+
+        <div class="row">
+			<div class="item col-md-3 col-sm-6 col-xs-12">
+                <img src="https://pmb.ubhinus.ac.id/assets/frontend/onepage/img/portfolio/2021/5a.jpg" alt="NAME" class="img-responsive">
+                <a href="https://pmb.ubhinus.ac.id/assets/frontend/onepage/img/portfolio/2021/5a.jpg" title="Risky Dewantara" class="zoom valign-center">
+                    <div class="valign-center-elem">
+                        <strong>Risky Dewantara</strong>
+                        <em>Juara 3 Porprov Jatim VI Cabor Basket</em>
+                        <b>Lihat</b>
+                    </div>
+                </a>
+            </div>
+            <div class="item col-md-3 col-sm-6 col-xs-12">
+                <img src="https://pmb.ubhinus.ac.id/assets/frontend/onepage/img/portfolio/2021/6a.jpg" alt="NAME" class="img-responsive">
+                <a href="https://pmb.ubhinus.ac.id/assets/frontend/onepage/img/portfolio/2021/6a.jpg" title="Tim Putra" class="zoom valign-center">
+                    <div class="valign-center-elem">
+                        <strong>Tim Putra</strong>
+                        <em>LA Campus League</em>
+                        <b>Lihat</b>
+                    </div>
+                </a>
+            </div>      
+            <div class="item col-md-3 col-sm-6 col-xs-12">
+                <img src="https://pmb.ubhinus.ac.id/assets/frontend/onepage/img/portfolio/2021/7a.jpg" alt="NAME" class="img-responsive">
+                <a href="https://pmb.ubhinus.ac.id/assets/frontend/onepage/img/portfolio/2021/7a.jpg" title="Juara 3" class="zoom valign-center">
+                    <div class="valign-center-elem">
+                        <strong>Juara 3</strong>
+                        <em>Gemastik Nasional 2019</em>
+                        <b>Lihat</b>
+                    </div>
+                </a>
+            </div>
+            <div class="item col-md-3 col-sm-6 col-xs-12">
+                <img src="https://pmb.ubhinus.ac.id/assets/frontend/onepage/img/portfolio/2021/8a.jpg" alt="NAME" class="img-responsive">
+                <a href="https://pmb.ubhinus.ac.id/assets/frontend/onepage/img/portfolio/2021/8a.jpg" title="Suhendra" class="zoom valign-center">
+                    <div class="valign-center-elem">
+                        <strong>Suhendra</strong>
+                        <em>Istanbul Youth Summit</em>
+                        <b>Lihat</b>
+                    </div>
+                </a>
+            </div>
+            <!-- <div class="item col-md-3 col-sm-6 col-xs-12">
+                <img src="https://pmb.ubhinus.ac.id/assets/frontend/onepage/img/portfolio/2020/basketball-2.jpg" alt="NAME" class="img-responsive">
+                <a href="https://pmb.ubhinus.ac.id/assets/frontend/onepage/img/portfolio/2020/basketball-2.jpg" title="STIKI Basketball league" class="zoom valign-center">
+                    <div class="valign-center-elem">
+                        <strong>STIKI Basketball league</strong>
+                        <em>Kegiatan UKM</em>
+                        <b>Lihat</b>
+                    </div>
+                </a>
+            </div> -->
+        </div>
+    </div>
+    <!-- Galeri block END -->
+    
+    <!-- BEGIN PRE-FOOTER -->
+    <div class="pre-footer" id="kontak">
+        <div class="container">
+            <div class="row">
+                <!-- BEGIN BOTTOM ABOUT BLOCK -->
+                <div class="col-md-4 col-sm-6 pre-footer-col">
+                    <h2>Peta</h2>
+                    <div class="col-md-4 col-sm-6 pre-footer-col">
+                        <iframe src="https://mapsengine.google.com/map/u/1/embed?mid=z9oBGik1qZiQ.kOAh1xF6MT2A" height="225"></iframe>
+                    </div>          
+                </div>
+                <!-- END BOTTOM ABOUT BLOCK -->
+                <!-- BEGIN TWITTER BLOCK --> 
+                <div class="col-md-4 col-sm-6 pre-footer-col">
+                    <h2 class="margin-bottom-0">Latest Tweets</h2>
+                    <a class="twitter-timeline" href="https://twitter.com/STIKIMalang" data-tweet-limit="2" data-theme="dark" data-link-color="#57C8EB" data-widget-id="590405069188636672" data-chrome="noheader nofooter noscrollbar noborders transparent">Loading tweets by @STIKIMalang...</a>      
+                </div>
+                <!-- END TWITTER BLOCK -->
+                <div class="col-md-4 col-sm-6 pre-footer-col">
+                    <!-- BEGIN BOTTOM CONTACTS -->
+                    <h2>Kontak</h2>
+                    <address class="margin-bottom-20">
+                        Universitas Bhinneka Nusantara (UBHINUS)
+                        <br> dh. Sekolah Tinggi Informatika dan Komputer Indonesia (STIKI)<br>
+                        Jl. Tidar Raya 100 Malang - Jawa Timur            
+                        0341-560823 fax :0341-562525 
+                        Email: <a href="mailto:stiki@stiki.ac.id">stiki@stiki.ac.id</a><br>            
+                    </address>
+                    <!-- END BOTTOM CONTACTS -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END PRE-FOOTER -->
+    <!-- BEGIN FOOTER -->
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <!-- BEGIN COPYRIGHT -->
+                <div class="col-md-6 col-sm-6">
+                    <div class="copyright">2023 &copy; sisfo.stiki.ac.id. ALL Rights Reserved.</div>
+                </div>
+                <!-- END COPYRIGHT -->
+                <!-- BEGIN SOCIAL ICONS -->
+                <div class="col-md-6 col-sm-6 pull-right">
+                    <ul class="social-icons">            
+                        <li><a class="facebook" data-original-title="facebook" target="_blank" href="https://www.facebook.com/stiki.malang"></a></li>
+                        <li><a class="twitter" data-original-title="twitter" target="_blank" href="http://twitter.com/STIKIMalang"></a></li>            
+                    </ul>
+                </div>
+                <!-- END SOCIAL ICONS -->
+            </div>
+        </div>
+    </div>
+    <!-- END FOOTER -->
+    <div class="modal fade" id="brochure_md" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title"></h4>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div id="alert_brosure" class="alert alert-danger" style="margin:10px">
+                  <strong>Gagal : </strong><span>Gagal mengunduh bosur, silahkan coba lagi atau hubungi operator kami</span>
+              </div> 
+              <form name="form_brosur" class="form-horizontal" role="form">
+                <fieldset>
+                  <input type="hidden" name="lang"/>
+                  <div class="form-group">
+                      <label for="form_nama" class="col-lg-3 control-label pull-left">
+                        <span class="lbl lbl-id">Nama Lengkap</span>
+                        <span class="lbl lbl-en">Full Name</span>
+                        <span class="require">*</span>
+                      </label>
+                      <div class="col-lg-8">
+                          <input type="text" class="form-control" name="nama" >
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <label for="form_nama" class="col-lg-3 control-label pull-left">
+                        <span class="lbl lbl-id">Telepon</span>
+                        <span class="lbl lbl-en">Phone</span>
+                        <span class="require">*</span>
+                      </label>
+                      <div class="col-lg-8">
+                          <input type="text" class="form-control" name="telp" >
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <label for="form_nama" class="col-lg-3 control-label pull-left">Email<span class="require">*</span></label>
+                      <div class="col-lg-8">
+                          <input type="text" class="form-control" name="email" >
+                      </div>
+                  </div>
+                </fieldset>
+              </form>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" style="text-transform: none">
+              <span class="lbl lbl-id">Tutup</span>
+              <span class="lbl lbl-en">Close</span>
+            </button>
+            <button type="button" class="btn btn-primary" style="text-transform: none" data-aksi="download_brochure">
+              <span class="lbl lbl-id">Download Brosur</span>
+              <span class="lbl lbl-en">Download Brochure</span>
+            </button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+	
+    <div class="modal fade" id="brochure_flip_md" tabindex="-1" role="dialog">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Brosur</h4>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <!-- <iframe  style="width:100%; height:400px;"  src="https://online.flipbuilder.com/qcbs/epyi/index.html"  
+					seamless="seamless" scrolling="no" frameborder="0" 
+					allowtransparency="true"></iframe>-->
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" style="text-transform: none">
+              <span class="lbl lbl-id">Tutup</span>
+            </button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <div class="modal fade" id="md_kerjasamasma" tabindex="-1" role="dialog">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Kerjasama SMA/SMK</h4>
+          </div>
+          <div class="modal-body" style="min-height:100px">
+            
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" style="text-transform: none">
+              <span class="lbl lbl-id">Tutup</span>
+            </button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    
+
+    <a href="#promo-block" class="go2top scroll"><i class="fa fa-arrow-up"></i></a>
+        <a class="whatsapme" href="https://wa.me/62341560823" target="_blank">
+      <img src="https://pmb.ubhinus.ac.id/assets/content/default/wa.png" id="wame" style="width: 100%"/>
+      <img src="https://pmb.ubhinus.ac.id/assets/content/default/wa-hover.png" id="wame-hover" style="width: 100%"/>
+    </a>
+        <!--[if lt IE 9]>
+    <script src="https://pmb.ubhinus.ac.id/assets/global/plugins/respond.min.js"></script>
+    <![endif]-->
+    <!-- Load JavaScripts at the bottom, because it will reduce page load time -->
+    <!-- Core plugins BEGIN (For ALL pages) -->
+    <script src="https://pmb.ubhinus.ac.id/assets/global/plugins/jquery.min.js" type="text/javascript"></script>
+    <script src="https://pmb.ubhinus.ac.id/assets/global/plugins/jquery-migrate.min.js" type="text/javascript"></script>
+    <script src="https://pmb.ubhinus.ac.id/assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <!-- Core plugins END (For ALL pages) -->
+    <!-- BEGIN RevolutionSlider -->
+    <script src="https://pmb.ubhinus.ac.id/assets/global/plugins/slider-revolution-slider/rs-plugin/js/jquery.themepunch.revolution.min.js" type="text/javascript"></script>
+    <script src="https://pmb.ubhinus.ac.id/assets/global/plugins/slider-revolution-slider/rs-plugin/js/jquery.themepunch.tools.min.js" type="text/javascript"></script>
+    <script src="https://pmb.ubhinus.ac.id/assets/frontend/onepage/scripts/revo-ini.js" type="text/javascript"></script> 
+    <!-- END RevolutionSlider -->
+    <!-- Core plugins BEGIN (required only for current page) -->
+    <script src="https://pmb.ubhinus.ac.id/assets/global/plugins/fancybox/source/jquery.fancybox.pack.js" type="text/javascript"></script><!-- pop up -->
+    <script src="https://pmb.ubhinus.ac.id/assets/global/plugins/jquery.easing.js"></script>
+    <script src="https://pmb.ubhinus.ac.id/assets/global/plugins/jquery.parallax.js"></script>
+    <script src="https://pmb.ubhinus.ac.id/assets/global/plugins/jquery.scrollTo.min.js"></script>
+    <script src="https://pmb.ubhinus.ac.id/assets/frontend/onepage/scripts/jquery.nav.js"></script>  
+    <!-- Core plugins END (required only for current page) -->
+    <!-- Global js BEGIN -->
+    <script src="https://pmb.ubhinus.ac.id/assets/frontend/onepage/scripts/layout.js" type="text/javascript"></script>
+    <script src="https://pmb.ubhinus.ac.id/assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
+    <script src="https://pmb.ubhinus.ac.id/assets/admin/pages/scripts/ui-blockui.js"></script>
+    <script src="https://pmb.ubhinus.ac.id/assets/global/scripts/metronic.js" type="text/javascript"></script>
+    <script src="https://pmb.ubhinus.ac.id/assets/additional/select2/select2.min.js"></script>
+    <script src="https://pmb.ubhinus.ac.id/assets/plugins/slick/slick.min.js"></script>
+	<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+	<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
+    <script>
+      var _site_url = "https://pmb.ubhinus.ac.id/index.php";
+    </script>
+	<script src="https://pmb.ubhinus.ac.id/assets/scripts/lib/app.js"></script>
+    <script src="https://pmb.ubhinus.ac.id/assets/scripts/lib/my_plugins.js"></script>
+    <script src="https://pmb.ubhinus.ac.id/assets/additional/js/application/home/home.js"></script>
+    <script src="https://pmb.ubhinus.ac.id/assets/additional/js/application/home/brosur.js"></script>
+    <script src="https://pmb.ubhinus.ac.id/assets/additional/js/application/home/kerjasama.js"></script>
+    
+    <script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'id', includedLanguages: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+}
+</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  <!--  <script type="text/javascript" src="/livechat/php/app.php?widget-init.js"></script> -->
+    <!-- Global js END -->
 </body>
 </html>
+
+
