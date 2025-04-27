@@ -201,7 +201,7 @@
             position: fixed;
             bottom: 30px;
             right: 30px;
-            background-color: #007bff;
+            background-color: #0a1633;
             color: white;
             border: none;
             border-radius: 50%;
@@ -235,7 +235,7 @@
         }
     
         .chatbot-header {
-            background-color: #007bff;
+            background-color: #1d2936;
             color: white;
             padding: 10px;
             font-size: 1.2em;
@@ -331,13 +331,13 @@
                 <div class="col-md-10 pull-right">
                     <ul class="header-navigation">
                         <li><a href="javascript:;" data-aksi="download_brochure_id">Brosur</a></li>
-                        <li><a href="#daftar">Daftar</a></li>
-                        <li><a href="#fakultas">Fakultas</a></li>
-                        <li><a href="#prodi">Prodi</a></li>
-                        <li><a href="#jalur">Jalur</a></li>
-                        <li><a href="#beasiswa">Beasiswa</a></li>
+                        <li><a href="#">Daftar</a></li>
+                        <li><a href="#">Fakultas</a></li>
+                        <li><a href="#">Prodi</a></li>
+                        <li><a href="#">Jalur</a></li>
+                        <li><a href="#">Beasiswa</a></li>
                         <li><a href="javascript:;" data-aksi="open_kerjasamasma">Kerjasama SMA/K</a></li>
-                        <li><a href="#panduan">Panduan</a></li>
+                        <li><a href="#">Panduan</a></li>
                     </ul>
                 </div>
             </div>
@@ -388,7 +388,7 @@
         </div>
     </div>
     <script>
-        let publicUrl = "https://7962-104-197-186-189.ngrok-free.app"; // Ganti ini ke server kamu sendiri
+        let publicUrl = "https://bbb5-104-197-186-189.ngrok-free.app"; // Ganti ini dengan URL Ngrok Anda
     
         function toggleChatbot() {
             const popup = document.getElementById('chatbotPopup');
@@ -400,6 +400,8 @@
             const message = input.value;
             if (message.trim() !== '') {
                 const chatbotBody = document.getElementById('chatbotBody');
+    
+                // Menambahkan pesan dari pengguna ke chatbox
                 const userMessage = document.createElement('div');
                 userMessage.classList.add('chat-message', 'user');
                 const userBubble = document.createElement('div');
@@ -408,35 +410,45 @@
                 userMessage.appendChild(userBubble);
                 chatbotBody.appendChild(userMessage);
                 input.value = '';
-    
                 chatbotBody.scrollTop = chatbotBody.scrollHeight;
     
                 try {
                     const response = await fetch(publicUrl + '/chat', {
                         method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
                         body: JSON.stringify({ message: message }),
                     });
     
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+    
                     const data = await response.json();
+                    const botResponse = data.response;
+    
+                    // Menambahkan respons dari bot ke chatbox
                     const botMessage = document.createElement('div');
                     botMessage.classList.add('chat-message', 'bot');
                     const botBubble = document.createElement('div');
                     botBubble.classList.add('chat-bubble', 'bot');
-                    botBubble.textContent = data.response;
+                    botBubble.textContent = botResponse;
                     botMessage.appendChild(botBubble);
                     chatbotBody.appendChild(botMessage);
-                } catch (err) {
+                    chatbotBody.scrollTop = chatbotBody.scrollHeight;
+    
+                } catch (error) {
+                    console.error("Terjadi kesalahan:", error);
                     const errorMessage = document.createElement('div');
                     errorMessage.classList.add('chat-message', 'bot');
                     const errorBubble = document.createElement('div');
                     errorBubble.classList.add('chat-bubble', 'bot');
-                    errorBubble.textContent = 'Bot: Maaf, server error.';
+                    errorBubble.textContent = 'Maaf, ada masalah saat menghubungi server.'; // Pesan error koneksi
                     errorMessage.appendChild(errorBubble);
                     chatbotBody.appendChild(errorMessage);
+                    chatbotBody.scrollTop = chatbotBody.scrollHeight;
                 }
-    
-                chatbotBody.scrollTop = chatbotBody.scrollHeight;
             }
         }
     
