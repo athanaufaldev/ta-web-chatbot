@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <title>Chatbot Website</title>
@@ -7,71 +8,73 @@
         /* CSS ringkas, kayak sebelumnya */
     </style>
 </head>
+
 <body>
 
-<header>
-    <h1>Selamat Datang</h1>
-</header>
+    <header>
+        <h1>Selamat Datang</h1>
+    </header>
 
-<div class="content">
-    <p>Chat dengan kami lewat tombol di pojok kanan bawah!</p>
-</div>
-
-<button class="chatbot-button" onclick="toggleChatbot()">💬</button>
-
-<div class="chatbot-popup" id="chatbotPopup">
-    <div class="chatbot-header">
-        <h3>Chatbot</h3>
-        <button onclick="toggleChatbot()" style="float: right;">✖</button>
+    <div class="content">
+        <p>Chat dengan kami lewat tombol di pojok kanan bawah!</p>
     </div>
-    <div class="chatbot-body" id="chatbotBody">
-        <p>Halo! Ada yang bisa saya bantu?</p>
+
+    <button class="chatbot-button" onclick="toggleChatbot()">💬</button>
+
+    <div class="chatbot-popup" id="chatbotPopup">
+        <div class="chatbot-header">
+            <h3>Chatbot</h3>
+            <button onclick="toggleChatbot()" style="float: right;">✖</button>
+        </div>
+        <div class="chatbot-body" id="chatbotBody">
+            <p>Halo! Ada yang bisa saya bantu?</p>
+        </div>
+        <div class="chatbot-footer">
+            <input type="text" id="chatbotInput" placeholder="Tulis pesan...">
+            <button onclick="sendMessage()">Kirim</button>
+        </div>
     </div>
-    <div class="chatbot-footer">
-        <input type="text" id="chatbotInput" placeholder="Tulis pesan...">
-        <button onclick="sendMessage()">Kirim</button>
-    </div>
-</div>
 
-<script>
-    let publicUrl = "https://ebb1-35-231-173-213.ngrok-free.app"; // GANTI sama link ngrok HTTPS kamu
+    <script>
+        let publicUrl = "https://7cfb-34-68-174-7.ngrok-free.app"; // GANTI sama link ngrok HTTPS kamu
 
-    function toggleChatbot() {
-        const popup = document.getElementById('chatbotPopup');
-        popup.style.display = (popup.style.display === 'block') ? 'none' : 'block';
-    }
-
-    async function sendMessage() {
-        const input = document.getElementById('chatbotInput');
-        const message = input.value;
-        if (message.trim() !== '') {
-            const chatbotBody = document.getElementById('chatbotBody');
-            const userMessage = document.createElement('p');
-            userMessage.textContent = 'Anda: ' + message;
-            chatbotBody.appendChild(userMessage);
-            input.value = '';
-
-            try {
-                const response = await fetch(publicUrl + '/chat', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ message: message }),
-                });
-
-                const data = await response.json();
-                const botMessage = document.createElement('p');
-                botMessage.textContent = 'Bot: ' + data.response;
-                chatbotBody.appendChild(botMessage);
-            } catch (err) {
-                const errorMessage = document.createElement('p');
-                errorMessage.textContent = 'Bot: Maaf, server error.';
-                chatbotBody.appendChild(errorMessage);
-            }
-
-            chatbotBody.scrollTop = chatbotBody.scrollHeight;
+        function toggleChatbot() {
+            const popup = document.getElementById('chatbotPopup');
+            popup.style.display = (popup.style.display === 'block') ? 'none' : 'block';
         }
-    }
-</script>
+
+        async function sendMessage() {
+            const input = document.getElementById('chatbotInput');
+            const message = input.value;
+            if (message.trim() !== '') {
+                const chatbotBody = document.getElementById('chatbotBody');
+                const userMessage = document.createElement('p');
+                userMessage.textContent = 'Anda: ' + message;
+                chatbotBody.appendChild(userMessage);
+                input.value = '';
+
+                try {
+                    const response = await fetch(publicUrl + '/chat', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ message: message }),
+                    });
+
+                    const data = await response.json();
+                    const botMessage = document.createElement('p');
+                    botMessage.textContent = 'Bot: ' + data.response;
+                    chatbotBody.appendChild(botMessage);
+                } catch (err) {
+                    const errorMessage = document.createElement('p');
+                    errorMessage.textContent = 'Bot: Maaf, server error.';
+                    chatbotBody.appendChild(errorMessage);
+                }
+
+                chatbotBody.scrollTop = chatbotBody.scrollHeight;
+            }
+        }
+    </script>
 
 </body>
+
 </html>
